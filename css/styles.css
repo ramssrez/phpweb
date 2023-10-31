@@ -136,3 +136,38 @@ li:last-child {
     color: #e50914;
     font-size: 20px;
 }
+.busqueda-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0,0,0,.8);
+
+}
+.busqueda input{
+    width: 90%;
+    padding: 20px;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #fff;
+    background-color: rgba(0,0,0,.8);
+}
+.busqueda input::placeholder{
+    color: rgb(255, 255, 255,.5);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.busqueda{
+    width: 90%;
+}
+.btn-search{
+    width: 10%;
+}
+.btn-search input{
+    width: 90%;
+    background-color: #e50914;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-right: 10px;
+    padding: 10px;
+}

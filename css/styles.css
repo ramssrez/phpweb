@@ -90,12 +90,11 @@ svg {
     font-family: 'Bebas Neue', sans-serif;
 }
 .container-paragraf{
-    background: rgba(0,0,0,.8);
-    margin: 10px auto;
+    background: rgba(0,0,0,.9);
+    margin: 10px 200px;
 }
 .container-paragraf p{
-    margin: 10px auto;
-    padding: 50px;
+    padding: 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
     color: #fff;

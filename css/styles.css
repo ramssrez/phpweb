@@ -1,3 +1,99 @@
+html{
+    height: 100%;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("../images/collageMovie.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.contenedor{
+    margin: 5px auto;
+    width: 400px;
+    padding: 40px;
+    background: rgba(0,0,0, .7);
+    border-radius: 20px;
+}
+.contenedor h2{
+    margin: 0 0 30px;
+    padding: 0;
+    font-size: 30px;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
+}
+.contenedor .elemento label{
+    font-size: 25px;
+    color: #fff;
+    font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
+}
+.contenedor .elemento input{
+    width: 100%;
+    padding: 10px 0;
+    color: #fff;
+    background: transparent;
+    border: none;
+    border-bottom: 01px solid #fff;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
+}
+.contenedor .elemento input[type="submit"]{
+    background-color: #e50914;
+    border:none;
+    letter-spacing: 2px;
+    cursor: pointer;
+    padding: 15px;
+    margin-top: 30px;
+    font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
+}
+svg {
+    width: 500px;
+    height: 100px;
+    fill: #e50914;
+    font-size: 48px;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+
+/*
+
 h1{
     background-color: aqua;
 }
+header {
+    background: rgba(0,0,0,0.7);
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+nav {
+    float: left;
+}
+nav ul {
+    list-style-type: none;
+    overflow: hidden; 
+    background-color: #45b9d4;
+}
+li{
+    float: left;
+    padding: 10px;
+}
+li a{
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+li a:hover{
+    background-color: #1d3557;
+}
+.logo-cine{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    color: red;
+}
+*/

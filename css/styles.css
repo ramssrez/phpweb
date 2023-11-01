@@ -55,6 +55,7 @@ body{
     cursor: pointer;
     padding: 15px;
     margin-top: 30px;
+    border-radius: 10px;
     font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
 }
 .contenedor-crud{
@@ -65,16 +66,16 @@ body{
     border-radius: 20px;
 }
 .contenedor-crud h2{
-    margin: 0 0 30px;
+    margin: 0 0 20px;
     padding: 0;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bolder;
     color: #fff;
     text-align: center;
     font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
 }
 .contenedor-crud .elemento label{
-    font-size: 20px;
+    font-size: 15px;
     color: #fff;
     font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
 }
@@ -89,7 +90,7 @@ body{
     font-size: 15px;
     font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
 }
-#agregar_actor{
+#btn-agregar{
     background-color: #1be509;
     border:none;
     letter-spacing: 2px;
@@ -97,21 +98,38 @@ body{
     padding: 15px;
     margin-top: 30px;
     font-size: 20px;
+    border-radius: 10px;
     font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
 }
-.table-crud{
-    background-color: rgba(0,0,0, .7);
+#btn-actualizar{
+    background-color: #3e3e3a;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#btn-eliminar{
+    background-color: #e50914;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #fff;
+}
+.contenedor-table-crud{
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 .table-crud table{
     font-size: 15px;
     font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
     table-layout: fixed;
-    border: solid 5px #fff;
+    border: solid 2px #fff;
     border-collapse: collapse;
     color: #fff;
 }
 .table-crud thead{
-    background-color: #222020;
+    background: rgba(0, 0, 0, 0.7);
 }
 .table-crud th{
     padding: 20px;
@@ -119,14 +137,21 @@ body{
 }
 .table-crud td{
     padding: 15px;
-    border-bottom: solid 5px #fff;
+    border-bottom: solid 2px #fff;
 }
 .table-crud tbody tr:hover{
-    background-color: #222020;
+    background-color: #000000b3;
     color: #e50914;
 }
 .table-crud tbody tr{
     cursor: pointer;
+}
+.table-crud h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 svg {
     width: 350px;
@@ -218,7 +243,6 @@ li:last-child {
     display: flex;
     justify-content: center;
     background-color: rgba(0,0,0,.8);
-
 }
 .busqueda input{
     width: 90%;

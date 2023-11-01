@@ -63,17 +63,21 @@ svg {
     font-family: 'Bebas Neue', sans-serif;
     padding-top: 10px;
 }
-
 .footer {
     background: rgba(0,0,0,.7);
     text-align: center;
     margin-top: auto;
-    padding: 10px;
+    padding: 20px;
   }
+.footer-links p{
+    margin: 5px;
+    color: #fff;
+    font-size: 20px;
+}
 .footer-links a{
     color: #fff;
+    font-size: 20px;
     text-decoration: none;
-    font-size: 15px;
 }
 .footer-links a:hover{
     text-decoration: none;

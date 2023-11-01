@@ -18,7 +18,37 @@
                 <li><a href="#">CRUD Actor</a></li>
             </ul>
         </nav>
-       
+        <div class="contenedor-crud">
+            <h2>Registro de Actores</h2>
+            <form action="#" name="form-login" id="form-login">
+                <div class="elemento">
+                    <label for="name-actor">Nombre</label>
+                    <input type="text" id="name-actor" name="name-actor" required="true">
+                </div>
+                <div class="elemento">
+                    <label for="apellido-pa-actor">Apellido Paterno</label>
+                    <input type="text" id="apellido-pa-actor" name="apellido-pa-actor" required="true">
+                </div>
+                <div class="elemento">
+                    <label for="apellido-ma-actor">Apellido Materno</label>
+                    <input type="text" id="apellido-ma-actor" name="apellido-ma-actor" required="true">
+                </div>
+                <div class="elemento">
+                    <label for="nacionalidad-actor">Nacionalidad</label>
+                    <input type="text" id="nacionalidad-actor" name="nacionalidad-actor" required="true">
+                </div>
+                <div class="elemento">
+                    <label for="nacimiento-actor">Fecha de nacimiento-actor</label>
+                    <input type="date" id="nacimiento-actor" value="yyyy-mm-dd" name="nacimiento-actor" required="true">
+                </div>
+                <div class="elemento">
+                    <input id="agregar_actor" type="submit" value="Agregar">
+                </div>
+            </form>
+        </div>
+        <div class="table-crud">
+            <h1>Seción para la tabla</h1>
+        </div>
         <footer class="footer">
             <div class="footer-links">
                 <p>RRP-DPW1-noviembre/2023</p>

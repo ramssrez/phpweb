@@ -189,5 +189,12 @@ li:last-child {
     padding: 10px;
 }
 .home{
-    background-color: #111;
+    background-color: #222020;
+}
+.title-general{
+    color: #fff;
+    font-size: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    padding-top: 10px;
 }

@@ -16,6 +16,7 @@
                 <li><a href="RRPCRUDCategoria.html">CRUS Categorias</a></li>
                 <li><a href="RRPCRUDDirector.html">CRUD Director</a></li>
                 <li><a href="RRPCRUDActor.html">CRUD Actor</a></li>
+                <li><a href="../config/logout.php">Cerrar Sesión</a></li>
             </ul>
         </nav>
         <div class="contenedor-table-crud">

@@ -7,10 +7,20 @@
         <title>Cine Puebla</title>
     </head>
     <body class="home">
+        <?php
+            session_start();
+            if($_SESSION['user']){
+                $client = $_SESSION['user'];
+            }
+            else{
+                header("Location: ../index.php");
+                die();
+            }
+        ?>
         <nav class="navbar">
             <ul>
                 <li>
-                    <a href="RRPAdminHome.html" id="logo">Cine Ciudad Puebla</a>
+                    <a href="RRPAdminHome.php" id="logo">Cine Ciudad Puebla</a>
                 </li>
                 <li><a href="RRPCRUDPeliculas.html">CRUD Peliculas</a></li>
                 <li><a href="RRPCRUDCategoria.html">CRUS Categorias</a></li>
@@ -19,6 +29,7 @@
                 <li><a href="../config/logout.php">Cerrar Sesión</a></li>
             </ul>
         </nav>
+        <h1 class="title-general">Bienvenido: <?php echo $client; ?> </h1>
         <div class="contenedor-table-crud">
             <div class="contenedor-crud">
                 <h2>Registro de Pelicula</h2>

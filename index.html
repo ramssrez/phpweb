@@ -14,10 +14,22 @@
         </a>
         <div class="contenedor">
             <h2>Login</h2>
-            <form action="RRPHome.html" name="form-login" id="form-login">
+            <?php
+                if(isset($_GET['error']))
+                {
+            ?>   
+                <p class="error">
+                    <?php
+                        echo $_GET['error'];
+                    ?>
+                </p>  
+            <?php 
+               }
+            ?>
+            <form action="config/login.php" method="post" name="form-login" id="form-login">
                 <div class="elemento">
                     <label for="usuario">Usuario</label>
-                    <input type="text" id="usuario" name="usuario" required="true">
+                    <input type="text" id="usuario" name="user" required="true">
                 </div>
                 <div class="elemento">
                     <label for="password">Password</label>

@@ -24,7 +24,7 @@ body{
     border-radius: 20px;
 }
 .contenedor h2{
-    margin: 0 0 30px;
+    margin-bottom: 15px;
     padding: 0;
     font-size: 25px;
     font-weight: bolder;
@@ -304,4 +304,11 @@ li:last-child {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
     padding-top: 10px;
+}
+.contenedor .error{
+    background-color: rgb(230, 10, 21,.5);
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }

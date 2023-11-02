@@ -15,16 +15,14 @@
         <div class="contenedor">
             <h2>Login</h2>
             <?php
-                if(isset($_GET['error']))
+                if(isset($_GET['error']) && $_GET['error'] == 1 )
                 {
-            ?>   
-                <p class="error">
-                    <?php
-                        echo $_GET['error'];
-                    ?>
-                </p>  
-            <?php 
-               }
+                    echo "<p class='error'>El usuario no existe</p>";
+                }
+                if(isset($_GET['sesion']) && $_GET['sesion'] == 1 )
+                {
+                    echo "<p class='sesion'>Sesión cerrada correctamente</p>";
+                }       
             ?>
             <form action="config/login.php" method="post" name="form-login" id="form-login">
                 <div class="elemento">
@@ -33,7 +31,7 @@
                 </div>
                 <div class="elemento">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="pass" required="true">
+                    <input type="password" id="password" name="pass" required="true" value="ES1921023412">
                 </div>
                 <div class="elemento">
                     <input type="submit" value="Iniciar Sesión">

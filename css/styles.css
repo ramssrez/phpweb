@@ -314,3 +314,12 @@ li:last-child {
     text-align: center;
     font-size: 20px;
 }
+.contenedor .sesion{
+    background-color: rgba(10, 230, 113, 0.5);
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 20px;
+}

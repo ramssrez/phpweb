@@ -7,7 +7,7 @@
         <title>Cine Puebla</title>
     </head>
     <body class="background-general">
-        <a href="index.html">
+        <a href="index.php">
             <svg viewBox="0 0 200 100">
                 <text x="40%" y="50%" text-anchor="middle">Cine Ciudad Puebla</text>
             </svg>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="elemento">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required="true">
+                    <input type="password" id="password" name="pass" required="true">
                 </div>
                 <div class="elemento">
                     <input type="submit" value="Iniciar Sesión">

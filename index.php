@@ -31,7 +31,7 @@
                 </div>
                 <div class="elemento">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="pass" required="true" value="ES1921023412">
+                    <input type="password" id="password" name="pass" required="true">
                 </div>
                 <div class="elemento">
                     <input type="submit" value="Iniciar Sesión">

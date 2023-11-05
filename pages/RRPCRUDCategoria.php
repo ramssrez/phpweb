@@ -1,9 +1,7 @@
 <?php
-/*
     if(isset($_POST['submit-category'])){
         $name_category = $_POST['name-categoria'];
     }
-    */
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -29,24 +27,13 @@
         <div class="contenedor-table-crud">
             <div class="contenedor-crud">
                 <h2>Registro de Categorias</h2>
-                <form action="../config/validarCampos.php" name="form-categoria" id="form-categoria" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="form-categoria" id="form-categoria" method="post">
                     <div class="elemento">
                         <label for="name-categoria">Nombre</label>
-                        <input type="text" id="name-categoria" name="name-categoria">
+                        <input type="text" id="name-categoria" name="name-categoria" value="<?php if(isset($name_category)) echo $name_category;?>">
                     </div>
                         <?php
-                            if(isset($_GET['error']) && $_GET['error'] == 2 )
-                            {
-                                echo "<p class='error'>*El campo esta vacio</p>";
-                            } 
-                            if(isset($_GET['error']) && $_GET['error'] == 3 )
-                            {
-                                echo "<p class='error'>*El campo no debe de contener números ni caracteres especiales</p>";
-                            } 
-                            if(isset($_GET['sussesful']) && $_GET['sussesful'] == 1 )
-                            {
-                                echo "<p class='succesful'>*Datos enviados correctamente</p>";
-                            } 
+                            include("../config/validarC.php");
                         ?>
                     <div class="elemento">
                         <input id="btn-agregar" name= "submit-category" type="submit" value="Agregar">

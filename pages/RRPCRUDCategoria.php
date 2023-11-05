@@ -30,10 +30,10 @@
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="form-categoria" id="form-categoria" method="post">
                     <div class="elemento">
                         <label for="name-categoria">Nombre</label>
-                        <input type="text" id="name-categoria" name="name-categoria" value="<?php if(isset($name_category)) echo $name_category;?>">
+                        <input type="text" id="name-categoria" name="name-categoria">
                     </div>
                         <?php
-                            include("../config/validarC.php");
+                            include("../config/validarCategorias.php");
                         ?>
                     <div class="elemento">
                         <input id="btn-agregar" name= "submit-category" type="submit" value="Agregar">

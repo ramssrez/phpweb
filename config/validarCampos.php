@@ -1,5 +1,5 @@
 <?php
-    if(validarCampos()){
+    if(validarCampos() || validarCamposDirector()){
         echo "<p class='succesful'>*Datos enviados correctamente</p>";
     }
     function validarCampos(){
@@ -50,6 +50,56 @@
                 return false;
             }
             return true;
+        }
+    }
+    function validarCamposDirector(){
+        if(isset($_POST['submit-director'])){
+            $name_director = $_POST['name-director'];
+            $apellido_pa_director = $_POST['apellido-pa-director'];
+            $apellido_ma_director = $_POST['apellido-ma-director'];
+            $nacionalidad_director = $_POST['nacionalidad-director'];
+            $nacimiento_director = $_POST['nacimiento-director'];
+            if(empty($name_director)){
+                echo "<p class='error'>*El campo nombre del director esta vacio</p>";
+                return false;
+            }
+            if(!isValid($name_director)){
+                echo "<p class='error'>*El campo nombre no debe de contener números ni caracteres especiales</p>";
+                return false;
+            }
+            if(empty($apellido_pa_director)){
+                echo "<p class='error'>*El campo apellido paterno del director esta vacio</p>";
+                return false;
+            }
+            if(!isValid($apellido_pa_director)){
+                echo "<p class='error'>*El campo apellido no debe de contener números ni caracteres especiales</p>";
+                return false;
+            }
+            if(empty($apellido_ma_director)){
+                echo "<p class='error'>*El campo apellido materno del directoresta vacio</p>";
+                return false;
+            }
+            if(!isValid($apellido_ma_director)){
+                echo "<p class='error'>*El campo apellido no debe de contener números ni caracteres especiales</p>";
+                return false;
+            }
+            if(empty($nacionalidad_director)){
+                echo "<p class='error'>*El campo de nacionalidad del director esta vacio</p>";
+                return false;
+            }
+            if(!isValid($nacionalidad_director)){
+                echo "<p class='error'>*El campo nacionalidad no debe de contener números ni caracteres especiales</p>";
+                return false;
+            }
+            if(empty($nacimiento_director)){
+                echo "<p class='error'>*El campo de nacimiento del director esta vacio</p>";
+                return false;
+            }
+            if(!isValidDate($nacimiento_director)){
+                echo "<p class='error'>*El formato de fecha no es el correcto yyyy-mm-dd</p>";
+                return false;
+            }
+            return true;  
         }
     }
     function isValidDate($date){

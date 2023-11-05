@@ -46,7 +46,7 @@
                     </div>
                     <div class="elemento">
                         <label for="nacionalidad-actor">Nacionalidad</label>
-                        <input type="text" id="nacionalidad-actor" name="nacionalidad-actor" value="<?php if(isset($nacimiento_actor)) echo $nacimiento_actor ?>">
+                        <input type="text" id="nacionalidad-actor" name="nacionalidad-actor">
                     </div>
                     <div class="elemento">
                         <label for="nacimiento-actor">Fecha de nacimiento del actor</label>

@@ -1,3 +1,12 @@
+<?php 
+    if(isset($_POST['submit-actor'])){
+        $name_actor = $_POST['name-actor'];
+        $apellido_pa_actor = $_POST['apellido-pa-actor'];
+        $apellido_ma_actor = $_POST['apellido-ma-actor'];
+        $nacionalidad_actor = $_POST['nacionalidad-actor'];
+        $nacimiento_actor = $_POST['nacimiento-actor'];
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -22,29 +31,32 @@
         <div class="contenedor-table-crud">
             <div class="contenedor-crud">
                 <h2>Registro de Actor</h2>
-                <form action="#" name="form-login" id="form-login">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="form-login" id="form-login" method="post">
                     <div class="elemento">
                         <label for="name-actor">Nombre</label>
-                        <input type="text" id="name-actor" name="name-actor" required="true">
+                        <input type="text" id="name-actor" name="name-actor">
                     </div>
                     <div class="elemento">
                         <label for="apellido-pa-actor">Apellido Paterno</label>
-                        <input type="text" id="apellido-pa-actor" name="apellido-pa-actor" required="true">
+                        <input type="text" id="apellido-pa-actor" name="apellido-pa-actor">
                     </div>
                     <div class="elemento">
                         <label for="apellido-ma-actor">Apellido Materno</label>
-                        <input type="text" id="apellido-ma-actor" name="apellido-ma-actor" required="true">
+                        <input type="text" id="apellido-ma-actor" name="apellido-ma-actor" >
                     </div>
                     <div class="elemento">
                         <label for="nacionalidad-actor">Nacionalidad</label>
-                        <input type="text" id="nacionalidad-actor" name="nacionalidad-actor" required="true">
+                        <input type="text" id="nacionalidad-actor" name="nacionalidad-actor" value="<?php if(isset($nacimiento_actor)) echo $nacimiento_actor ?>">
                     </div>
                     <div class="elemento">
-                        <label for="nacimiento-actor">Fecha de nacimiento-actor</label>
-                        <input type="date" id="nacimiento-actor" value="yyyy-mm-dd" name="nacimiento-actor" required="true">
+                        <label for="nacimiento-actor">Fecha de nacimiento del actor</label>
+                        <input type="date" id="nacimiento-actor"  name="nacimiento-actor">
                     </div>
+                    <?php
+                        include("../config/validarCampos.php");
+                    ?>
                     <div class="elemento">
-                        <input id="btn-agregar" type="submit" value="Agregar">
+                        <input id="btn-agregar" type="submit" name= "submit-actor" value="Agregar">
                     </div>
                 </form>
             </div>

@@ -329,6 +329,7 @@ li:last-child {
     padding: 10px;
     border-radius: 10px;
     text-align: left;
+    margin-top: 5px;
 }
 .contenedor-crud .succesful{
     background-color: rgba(10, 230, 113, 0.5);

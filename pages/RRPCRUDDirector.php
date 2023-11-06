@@ -50,7 +50,7 @@
                         <input type="text" id="nacionalidad-director" name="nacionalidad-director" >
                     </div>
                     <div class="elemento">
-                        <label for="nacimiento-director">Fecha de nacimiento-actor</label>
+                        <label for="nacimiento-director">Fecha de nacimiento del director</label>
                         <input type="date" id="nacimiento-director" name="nacimiento-director" >
                     </div>
                     <?php

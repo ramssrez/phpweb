@@ -33,7 +33,7 @@
                         <input type="text" id="name-categoria" name="name-categoria">
                     </div>
                         <?php
-                            include("../config/validarCategorias.php");
+                            include("../config/validarCampos.php");
                         ?>
                     <div class="elemento">
                         <input id="btn-agregar" name= "submit-category" type="submit" value="Agregar">

@@ -1,6 +1,20 @@
 <?php
-    if(validarCamposActor() || validarCamposDirector()){
+    if(validarCamposActor() || validarCamposDirector() || validarCamposCategoria()){
         echo "<p class='succesful'>*Datos enviados correctamente</p>";
+    }
+    function validarCamposCategoria(){
+        if(isset($_POST['submit-category'])){
+            $name_category = $_POST['name-categoria'];
+            if(empty($name_category)){
+                echo "<p class='error'>*El campo categoría esta vacio</p>";
+                return false;
+            }
+            if(!isValidText($name_category,"Campo categoría")){
+                //echo "<p class='error'>*El campo no debe de contener números ni caracteres especiales</p>";
+                return false;
+            }
+            return true;
+        }
     }
     function validarCamposActor(){
         if(isset($_POST['submit-actor'])){

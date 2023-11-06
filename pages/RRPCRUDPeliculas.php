@@ -1,3 +1,16 @@
+<?php 
+    if(isset($_POST['submit-pelicula'])){
+        $name_pelicula = $_POST['name-pelicula'];
+        $pais_pelicula = $_POST['pais-pelicula'];
+        $sinopsis_pelicula = $_POST['sinopsis-pelicula'];
+        $imagen_pelicula = $_POST['imagen-pelicula'];
+        $year_pelicula = $_POST['year-pelicula'];
+        $clasificacion_pelicula = $_POST['clasificacion-pelicula'];
+        $categoria_pelicula = $_POST['categoria-pelicula'];
+        $director_pelicula = $_POST['director-pelicula'];
+        $actor_pelicula = $_POST['actor-pelicula'];
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -22,45 +35,48 @@
         <div class="contenedor-table-crud">
             <div class="contenedor-crud">
                 <h2>Registro de Pelicula</h2>
-                <form action="#" name="form-login" id="form-login">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"  method="post">
                     <div class="elemento">
                         <label for="name-pelicula">Nombre</label>
-                        <input type="text" id="name-pelicula" name="name-pelicula" required="true">
+                        <input type="text" id="name-pelicula" name="name-pelicula">
                     </div>
                     <div class="elemento">
                         <label for="pais-pelicula">País</label>
-                        <input type="text" id="pais-pelicula" name="pais-pelicula" required="true">
+                        <input type="text" id="pais-pelicula" name="pais-pelicula">
                     </div>
                     <div class="elemento">
                         <label for="sinopsis-pelicula">Sinopsis</label>
-                        <textarea name="" id="sinopsis-pelicula" rows="5"></textarea>
+                        <textarea name="sinopsis-pelicula" id="sinopsis-pelicula" rows="5"></textarea>
                     </div>
                     <div class="elemento">
                         <label for="imagen-pelicula">Imagen</label>
-                        <input type="text" id="imagen-pelicula" name="imagen-pelicula" accept="image/*" required="true">
+                        <input type="text" id="imagen-pelicula" name="imagen-pelicula">
                     </div>
                     <div class="elemento">
                         <label for="year-pelicula">Año</label>
-                        <input type="number" id="year-pelicula" name="year-pelicula" required="true">
+                        <input type="" id="year-pelicula" name="year-pelicula" >
                     </div>
                     <div class="elemento">
                         <label for="clasificacion-pelicula">Clasificación</label>
-                        <input type="text" id="clasificacion-pelicula" name="clasificacion-pelicula" required="true">
+                        <input type="text" id="clasificacion-pelicula" name="clasificacion-pelicula">
                     </div>
                     <div class="elemento">
                         <label for="categoria-pelicula">Categoría</label>
-                        <input type="text" id="categoria-pelicula" name="categoria-pelicula" required="true">
+                        <input type="text" id="categoria-pelicula" name="categoria-pelicula" >
                     </div>
                     <div class="elemento">
                         <label for="director-pelicula">Director</label>
-                        <input type="text" id="director-pelicula" name="director-pelicula" required="true">
+                        <input type="text" id="director-pelicula" name="director-pelicula">
                     </div>
                     <div class="elemento">
                         <label for="actor-pelicula">Actor</label>
-                        <input type="text" id="actor-pelicula" name="actor-pelicula" required="true">
+                        <input type="text" id="actor-pelicula" name="actor-pelicula" >
                     </div>
+                    <?php
+                        include("../config/validarCampos.php");
+                    ?>
                     <div class="elemento">
-                        <input id="btn-agregar" type="submit" value="Agregar">
+                        <input id="btn-agregar" type="submit" value="Agregar" name= "submit-pelicula">
                     </div>
                 </form>
             </div>

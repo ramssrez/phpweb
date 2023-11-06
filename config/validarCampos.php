@@ -1,6 +1,80 @@
 <?php
-    if(validarCamposActor() || validarCamposDirector() || validarCamposCategoria()){
+    if(validarCamposActor() || validarCamposDirector() || validarCamposCategoria() || validartCamposPelicula()){
         echo "<p class='succesful'>*Datos enviados correctamente</p>";
+    }
+    function validartCamposPelicula(){
+        if(isset($_POST['submit-pelicula'])){
+            $name_pelicula = $_POST['name-pelicula'];
+            $pais_pelicula = $_POST['pais-pelicula'];
+            $sinopsis_pelicula = $_POST['sinopsis-pelicula'];
+            $imagen_pelicula = $_POST['imagen-pelicula'];
+            $year_pelicula = $_POST['year-pelicula'];
+            $clasificacion_pelicula = $_POST['clasificacion-pelicula'];
+            $categoria_pelicula = $_POST['categoria-pelicula'];
+            $director_pelicula = $_POST['director-pelicula'];
+            $actor_pelicula = $_POST['actor-pelicula'];
+            if(empty($name_pelicula)){
+                echo "<p class='error'>*El campo nombre de la pelicula esta vacio</p>";
+                return false;
+            }
+            if(!isValidText($name_pelicula,"Campo nombre")){
+                return false;
+            }
+            if(empty($pais_pelicula)){
+                echo "<p class='error'>*El campo país de la pelicula esta vacio</p>";
+                return false;
+            }
+            if(!isValidText($pais_pelicula,"Campo país")){
+                return false;
+            }
+            if(empty($sinopsis_pelicula)){
+                echo "<p class='error'>*El campo sinopsis de la pelicula esta vacio</p>";
+                return false;
+            }
+            if(!isValidTextSinopsis($sinopsis_pelicula,"Campo sinopsis")){
+                return false;
+            }
+            if(empty($imagen_pelicula)){
+                echo "<p class='error'>*El campo imagen de la pelicula esta vacio</p>";
+                return false;
+            }
+            if(empty($year_pelicula)){
+                echo "<p class='error'>*El campo año de la pelicula esta vacio</p>";
+                return false;
+            }
+            if(!isValidYear($year_pelicula,"Campo año")){
+                return false;
+            }
+            if(empty($clasificacion_pelicula)){
+                echo "<p class='error'>*El campo clasificación de la pelicula esta vacio</p>";
+                return false;
+            }
+            if(!isValidText($clasificacion_pelicula,"Campo clasificación")){
+                return false;
+            }
+            if(empty($categoria_pelicula)){
+                echo "<p class='error'>*El campo categoría de la pelicula esta vacio</p>";
+                return false;
+            }
+            if(!isValidText($categoria_pelicula,"Campo categoría")){
+                return false;
+            }
+            if(empty($director_pelicula)){
+                echo "<p class='error'>*El campo director de la pelicula esta vacio</p>";
+                return false;
+            }
+            if(!isValidText($director_pelicula,"Campo director")){
+                return false;
+            }
+            if(empty($actor_pelicula)){
+                echo "<p class='error'>*El campo actor de la pelicula esta vacio</p>";
+                return false;
+            }
+            if(!isValidText($actor_pelicula,"Campo actor")){
+                return false;
+            }
+            return true;
+        }
     }
     function validarCamposCategoria(){
         if(isset($_POST['submit-category'])){
@@ -10,7 +84,6 @@
                 return false;
             }
             if(!isValidText($name_category,"Campo categoría")){
-                //echo "<p class='error'>*El campo no debe de contener números ni caracteres especiales</p>";
                 return false;
             }
             return true;
@@ -132,4 +205,34 @@
             return false;
         }
     } 
+    function isValidTextSinopsis($text,$name_campo){
+        try{
+            $pattern = "/^[a-zA-Z\sñáéíóúÁÉÍÓÚ'.]+$/";
+            if(!preg_match($pattern, $text)){
+                throw new Exception("*Error: El campo no debe de contener números; ".$name_campo);
+            }
+            return true;
+        }catch(Exception $e){
+            echo "<p class='error'>" . $e->getMessage() . "</p>";
+            return false;
+        }
+    } 
+    function isValidYear($text,$name_campo){
+        try{
+            $pattern = "/^[0-9]+$/";
+            if(!preg_match($pattern, $text)){
+                throw new Exception("*Error: El campo no debe de contener letras; ".$name_campo);
+            }
+            if($text < 1900){
+                throw new Exception("*Error: El año no debe ser menor a 1900; ".$name_campo);
+            }
+            if($text > 2024){
+                throw new Exception("*Error: El año no debe ser mayor a 2024; ".$name_campo);
+            }
+            return true;
+        }catch(Exception $e){
+            echo "<p class='error'>" . $e->getMessage() . "</p>";
+            return false;
+        }
+    }
 ?>

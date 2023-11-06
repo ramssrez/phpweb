@@ -32,7 +32,7 @@
         <div class="contenedor-table-crud">
             <div class="contenedor-crud">
                 <h2>Registro de Director</h2>
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" action="#" name="form-login" id="form-login" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="form-login" id="form-login" method="post">
                     <div class="elemento">
                         <label for="name-director">Nombre</label>
                         <input type="text" id="name-director" name="name-director" >

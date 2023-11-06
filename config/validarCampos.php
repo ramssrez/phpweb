@@ -63,32 +63,28 @@
                 echo "<p class='error'>*El campo nombre del director esta vacio</p>";
                 return false;
             }
-            if(!isValid($name_director)){
-                echo "<p class='error'>*El campo nombre no debe de contener números ni caracteres especiales</p>";
+            if(!isValidText($name_director,"Campo nombre")){
                 return false;
             }
             if(empty($apellido_pa_director)){
                 echo "<p class='error'>*El campo apellido paterno del director esta vacio</p>";
                 return false;
             }
-            if(!isValid($apellido_pa_director)){
-                echo "<p class='error'>*El campo apellido no debe de contener números ni caracteres especiales</p>";
+            if(!isValidText($apellido_pa_director,"Campo apellido paterno")){
                 return false;
             }
             if(empty($apellido_ma_director)){
                 echo "<p class='error'>*El campo apellido materno del directoresta vacio</p>";
                 return false;
             }
-            if(!isValid($apellido_ma_director)){
-                echo "<p class='error'>*El campo apellido no debe de contener números ni caracteres especiales</p>";
+            if(!isValidText($apellido_ma_director,"Campo apellido materno")){
                 return false;
             }
             if(empty($nacionalidad_director)){
                 echo "<p class='error'>*El campo de nacionalidad del director esta vacio</p>";
                 return false;
             }
-            if(!isValid($nacionalidad_director)){
-                echo "<p class='error'>*El campo nacionalidad no debe de contener números ni caracteres especiales</p>";
+            if(!isValidText($nacionalidad_director,"Campo nacionalidad")){
                 return false;
             }
             if(empty($nacimiento_director)){
@@ -96,20 +92,39 @@
                 return false;
             }
             if(!isValidDate($nacimiento_director)){
-                echo "<p class='error'>*El formato de fecha no es el correcto yyyy-mm-dd</p>";
                 return false;
             }
             return true;  
         }
     }
     function isValidDate($date){
-        $date_arr = explode('-', $date);
-        if(count($date_arr) == 3 && checkdate($date_arr[1],$date_arr[2],$date_arr[0])){
-            return true;
+        try{
+            $date_arr = explode('-', $date);
+            if(!is_numeric($date_arr[0]) || !is_numeric($date_arr[1]) || !is_numeric($date_arr[2])){
+                throw new Exception("*Error: El formato de fecha no es el correcto yyyy-mm-dd");
+            }
+            if(count($date_arr) == 3 && checkdate($date_arr[1],$date_arr[2],$date_arr[0])){
+                return true;
+            }
+        }catch(Exception $e){    
+            echo "<p class='error'>" . $e->getMessage() . "</p>";
+            return false;
         }
     }
     function isValid($text){
         $pattern = "/^[a-zA-Z\sñáéíóúÁÉÍÓÚ]+$/";
         return preg_match($pattern, $text);
+    }
+    function isValidText($text,$name_campo){
+        try{
+            $pattern = "/^[a-zA-Z\sñáéíóúÁÉÍÓÚ]+$/";
+            if(!preg_match($pattern, $text)){
+                throw new Exception("*Error: El campo no debe de contener números ni caracteres especiales: ".$name_campo);
+            }
+            return true;
+        }catch(Exception $e){
+            echo "<p class='error'>" . $e->getMessage() . "</p>";
+            return false;
+        }
     }
 ?>

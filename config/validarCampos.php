@@ -1,6 +1,36 @@
 <?php
-    if(validarCamposActor() || validarCamposDirector() || validarCamposCategoria() || validartCamposPelicula()){
+    if(validarCamposActor() || validarCamposDirector() || validarCamposCategoria() || validartCamposPelicula() ||validarCamposCliente()){
         echo "<p class='succesful'>*Datos enviados correctamente</p>";
+    }
+    function validarCamposCliente(){
+        if(isset($_POST['submit-cliente'])){
+            $name_cliente = $_POST['name-cliente'];
+            $apellido_pa_cliente = $_POST['apellido-pa-cliente'];
+            $apellido_ma_cliente = $_POST['apellido-ma-cliente'];
+            $rfc_cliente = $_POST['rfc-cliente'];
+            $curp_cliente = $_POST['curp-cliente'];
+            if(empty($name_cliente)){
+                echo "<p class='error'>*El campo nombre del cliente esta vacio</p>";
+                return false;
+            }
+            if(empty($apellido_pa_cliente)){
+                echo "<p class='error'>*El campo apellido paterno del cliente esta vacio</p>";
+                return false;
+            }
+            if(empty($apellido_ma_cliente)){
+                echo "<p class='error'>*El campo apellido materno del cliente esta vacio</p>";
+                return false;
+            }
+            if(empty($rfc_cliente)){
+                echo "<p class='error'>*El campo RFC del cliente esta vacio</p>";
+                return false;
+            }
+            if(empty($curp_cliente)){
+                echo "<p class='error'>*El campo CURP del cliente esta vacio</p>";
+                return false;
+            }
+            return true;
+        }
     }
     function validartCamposPelicula(){
         if(isset($_POST['submit-pelicula'])){

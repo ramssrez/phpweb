@@ -1,3 +1,12 @@
+<?php 
+    if(isset($_POST['submit-cliente'])){
+        $name_cliente = $_POST['name-cliente'];
+        $apellido_pa_cliente = $_POST['apellido-pa-cliente'];
+        $apellido_ma_cliente = $_POST['apellido-ma-cliente'];
+        $rfc_cliente = $_POST['rfc-cliente'];
+        $curp_cliente = $_POST['curp-cliente'];
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -31,14 +40,14 @@
                         <input type="text" id="rfc-cliente" name="rfc-cliente">
                     </div>
                     <div class="elemento">
-                        <label for="nacimiento-actor">CURP</label>
+                        <label for="curp-cliente">CURP</label>
                         <input type="text" id="curp-cliente"  name="curp-cliente">
                     </div>
                     <?php
                         include("../config/validarCampos.php");
                     ?>
                     <div class="elemento">
-                        <input id="btn-agregar" type="submit" name= "submit-actor" value="Agregar">
+                        <input id="btn-agregar" type="submit" name= "submit-cliente" value="Agregar">
                     </div>
                 </form>
             </div>

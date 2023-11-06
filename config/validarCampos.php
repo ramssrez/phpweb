@@ -9,24 +9,43 @@
             $apellido_ma_cliente = $_POST['apellido-ma-cliente'];
             $rfc_cliente = $_POST['rfc-cliente'];
             $curp_cliente = $_POST['curp-cliente'];
+            /*
+            $curp_Prueba = "RAPR920627HMCMRL02";
+            $rfc_prueba = "RAPR920627SCA";
+            */
             if(empty($name_cliente)){
                 echo "<p class='error'>*El campo nombre del cliente esta vacio</p>";
+                return false;
+            }
+            if(!isValidText($name_cliente,"Campo nombre")){
                 return false;
             }
             if(empty($apellido_pa_cliente)){
                 echo "<p class='error'>*El campo apellido paterno del cliente esta vacio</p>";
                 return false;
             }
+            if(!isValidText($apellido_pa_cliente,"Campo apellido paterno")){
+                return false;
+            }
             if(empty($apellido_ma_cliente)){
                 echo "<p class='error'>*El campo apellido materno del cliente esta vacio</p>";
+                return false;
+            }
+            if(!isValidText($apellido_ma_cliente,"Campo apellido materno")){
                 return false;
             }
             if(empty($rfc_cliente)){
                 echo "<p class='error'>*El campo RFC del cliente esta vacio</p>";
                 return false;
             }
+            if(!isValidateRFC($rfc_cliente,"Campo RFC")){
+                return false;
+            }
             if(empty($curp_cliente)){
                 echo "<p class='error'>*El campo CURP del cliente esta vacio</p>";
+                return false;
+            }
+            if(!isValidateCURP($curp_cliente,"Campo CURP")){
                 return false;
             }
             return true;
@@ -207,6 +226,36 @@
                 return false;
             }
             return true;  
+        }
+    }
+    function isValidateRFC($text,$name_campo){
+        try{
+            $pattern = "/^[a-zA-Z0-9]+$/";
+            if(!preg_match($pattern, $text)){
+                throw new Exception("*Error: El campo no debe de contener caracteres especiales; ".$name_campo);
+            }
+            if(strlen($text) != 13){
+                throw new Exception("*Error: El campo debe de contener exactamente 13 caracteres; ".$name_campo);
+            }
+            return true;
+        }catch(Exception $e){    
+            echo "<p class='error'>" . $e->getMessage() . "</p>";
+            return false;
+        }
+    }
+    function isValidateCURP($text,$name_campo){
+        try{
+            $pattern = "/^[a-zA-Z0-9]+$/";
+            if(!preg_match($pattern, $text)){
+                throw new Exception("*Error: El campo no debe de contener caracteres especiales; ".$name_campo);
+            }
+            if(strlen($text) != 18){
+                throw new Exception("*Error: El campo debe de contener exactamente 18 caracteres; ".$name_campo);
+            }
+            return true;
+        }catch(Exception $e){    
+            echo "<p class='error'>" . $e->getMessage() . "</p>";
+            return false;
         }
     }
     function isValidDate($date){

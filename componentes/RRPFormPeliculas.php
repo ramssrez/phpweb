@@ -1,4 +1,4 @@
-<div class="contenedor-table-crud">
+        <div class="contenedor-table-crud">
             <div class="contenedor-crud">
                 <h2>Registro de Pelicula</h2>
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"  method="post">

@@ -1,8 +1,8 @@
 <?php
-    if(validarCampos() || validarCamposDirector()){
+    if(validarCamposActor() || validarCamposDirector()){
         echo "<p class='succesful'>*Datos enviados correctamente</p>";
     }
-    function validarCampos(){
+    function validarCamposActor(){
         if(isset($_POST['submit-actor'])){
             $name_actor = $_POST['name-actor'];
             $apellido_pa_actor = $_POST['apellido-pa-actor'];
@@ -13,32 +13,28 @@
                 echo "<p class='error'>*El campo nombre del actor esta vacio</p>";
                 return false;
             }
-            if(!isValid($name_actor)){
-                echo "<p class='error'>*El campo nombre no debe de contener números ni caracteres especiales</p>";
+            if(!isValidText($name_actor,"Campo nombre")){
                 return false;
             }
             if(empty($apellido_pa_actor)){
                 echo "<p class='error'>*El campo apellido paterno del actor esta vacio</p>";
                 return false;
             }
-            if(!isValid($apellido_pa_actor)){
-                echo "<p class='error'>*El campo apellido no debe de contener números ni caracteres especiales</p>";
+            if(!isValidText($apellido_pa_actor,"Campo apellido paterno")){
                 return false;
             }
             if(empty($apellido_ma_actor)){
                 echo "<p class='error'>*El campo apellido materno del actor esta vacio</p>";
                 return false;
             }
-            if(!isValid($apellido_ma_actor)){
-                echo "<p class='error'>*El campo apellido no debe de contener números ni caracteres especiales</p>";
+            if(!isValidText($apellido_ma_actor,"Campo apellido materno")){
                 return false;
             }
             if(empty($nacionalidad_actor)){
                 echo "<p class='error'>*El campo de nacionalidad del actor esta vacio</p>";
                 return false;
             }
-            if(!isValid($nacionalidad_actor)){
-                echo "<p class='error'>*El campo nacionalidad no debe de contener números ni caracteres especiales</p>";
+            if(!isValidText($nacionalidad_actor,"Campo nacionalidad")){
                 return false;
             }
             if(empty($nacimiento_actor)){
@@ -46,7 +42,6 @@
                 return false;
             }
             if(!isValidDate($nacimiento_actor)){
-                echo "<p class='error'>*El formato de fecha no es el correcto yyyy-mm-dd</p>";
                 return false;
             }
             return true;
@@ -111,20 +106,16 @@
             return false;
         }
     }
-    function isValid($text){
-        $pattern = "/^[a-zA-Z\sñáéíóúÁÉÍÓÚ]+$/";
-        return preg_match($pattern, $text);
-    }
     function isValidText($text,$name_campo){
         try{
             $pattern = "/^[a-zA-Z\sñáéíóúÁÉÍÓÚ]+$/";
             if(!preg_match($pattern, $text)){
-                throw new Exception("*Error: El campo no debe de contener números ni caracteres especiales: ".$name_campo);
+                throw new Exception("*Error: El campo no debe de contener números ni caracteres especiales; ".$name_campo);
             }
             return true;
         }catch(Exception $e){
             echo "<p class='error'>" . $e->getMessage() . "</p>";
             return false;
         }
-    }
+    } 
 ?>

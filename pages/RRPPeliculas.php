@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    if($_SESSION['user']){
+        $client = $_SESSION['user'];
+    }
+    else{
+        header("Location: ../index.php");
+        die();
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -7,17 +17,9 @@
         <title>Cine Puebla</title>
     </head>
     <body class="home">
-        <nav class="navbar">
-            <ul>
-                <li>
-                    <a href="RRPHome.php" id="logo">Cine Ciudad Puebla</a>
-                </li>
-                <li><a href="RRPHome.php">Inicio</a></li>
-                <li><a href="RRPPeliculas.html">Todas las Películas</a></li>
-                <li><a href="RRPPeliculasVistas.html">Películas Vistas</a></li>
-                <li><a href="../config/logout.php">Cerrar Sesión</a></li>
-            </ul>
-        </nav>
+        <?php
+            include("../componentes/RRPNavegacionUser.php");
+        ?>
         <h1 class="title-general">Todas las peliculas por ver</h1>
         <div class="image-container">
             <div class="image-galery">

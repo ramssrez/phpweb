@@ -228,88 +228,142 @@
             return true;  
         }
     }
+    //Función que valida el RFC del clientes
     function isValidateRFC($text,$name_campo){
+        //Uso de la sentención try/catch
         try{
+            //Uso de la expresión regular, solo para admitir texto y números
             $pattern = "/^[a-zA-Z0-9]+$/";
+            //Validacción para el caso de que el campo tenga caracteres especiales.
             if(!preg_match($pattern, $text)){
+                //Excepción lanzada para el caso de que ingrese números o caracteres especiales
                 throw new Exception("*Error: El campo no debe de contener caracteres especiales; ".$name_campo);
             }
+            //Validación para el caso de que el texto ingresado sea exactamente igual a 13
             if(strlen($text) != 13){
+                //Excepción lanzada para el caso de que el campo ingresado no sea de 13 caracteres
                 throw new Exception("*Error: El campo debe de contener exactamente 13 caracteres; ".$name_campo);
             }
             return true;
-        }catch(Exception $e){    
+        //Catch que atrapa las excepciónes generadas anteriormente
+        }catch(Exception $e){  
+            //Impresión del error en el html   
             echo "<p class='error'>" . $e->getMessage() . "</p>";
             return false;
         }
     }
+    //Función que valida el CURP del cliente
     function isValidateCURP($text,$name_campo){
+        //Uso de la sentención try/catch
         try{
+            //Uso de la expresión regular, solo para admitir texto y números
             $pattern = "/^[a-zA-Z0-9]+$/";
+            //Validacción para el caso de que el campo tenga caracteres especiales.
             if(!preg_match($pattern, $text)){
+                //Excepción lanzada para el caso de que ingrese números o caracteres especiales
                 throw new Exception("*Error: El campo no debe de contener caracteres especiales; ".$name_campo);
             }
+            //Validación para el caso de que el texto ingresado sea exactamente igual a 18
             if(strlen($text) != 18){
+                //Excepción lanzada para el caso de que el campo ingresado no sea de 18 caracteres
                 throw new Exception("*Error: El campo debe de contener exactamente 18 caracteres; ".$name_campo);
             }
             return true;
-        }catch(Exception $e){    
+        //Catch que atrapa las excepciónes generadas anteriormente
+        }catch(Exception $e){
+            //Impresión del error en el html    
             echo "<p class='error'>" . $e->getMessage() . "</p>";
             return false;
         }
     }
+    //Función qué válida si la fecha ingresado correctamente con el formato yyyy-mm-dd
     function isValidDate($date){
+        //Uso de la sentención try/catch
         try{
+            //Descomposición de la fecha en dias, meses y años, en enteros
             $date_arr = explode('-', $date);
+            //Validación para que lo ingresado sea en formato que se espera, y de tipo numerico
             if(!is_numeric($date_arr[0]) || !is_numeric($date_arr[1]) || !is_numeric($date_arr[2])){
+                //Exepción lanzada para el caso de que no sea en formato correcto
                 throw new Exception("*Error: El formato de fecha no es el correcto yyyy-mm-dd");
             }
+            //Validación para el caso de que sea correcta la fecha se lance un true y en caso contrario se lance una excepción
             if(count($date_arr) == 3 && checkdate($date_arr[1],$date_arr[2],$date_arr[0])){
                 return true;
+            }else{
+                //Exepción lanzada para el caso de que no sea en formato correcto
+                throw new Exception("*Error: El formato de fecha no es el correcto yyyy-mm-dd");
             }
+        //Catch que atrapa las excepciónes generadas anteriormente
         }catch(Exception $e){    
+            //Impresión del error en el html
             echo "<p class='error'>" . $e->getMessage() . "</p>";
             return false;
         }
     }
+    //Función qué válida el ingreso solo de texto, con acentos
     function isValidText($text,$name_campo){
+        //Uso de la sentención try/catch
         try{
+            //Uso de la expresión regular, solo para admitir texto.
             $pattern = "/^[a-zA-Z\sñáéíóúÁÉÍÓÚ]+$/";
+            //Validacción para el caso de que el campo tenga texto.
             if(!preg_match($pattern, $text)){
+                //Excepción lanzada para el caso de que ingrese números o caracteres especiales
                 throw new Exception("*Error: El campo no debe de contener números ni caracteres especiales; ".$name_campo);
             }
             return true;
+        //Catch que atrapa las excepciónes generadas anteriormente
         }catch(Exception $e){
+            //Impresión del error en el html
             echo "<p class='error'>" . $e->getMessage() . "</p>";
             return false;
         }
-    } 
+    }
+    //Función qué válida el ingreso de letras y algunos caracteres especiales como la comilla simple y el punto
     function isValidTextSinopsis($text,$name_campo){
+        //Uso de la sentención try/catch
         try{
+            //Uso de la expresión regular, solo para admitir texto, con algunos caracter especial
             $pattern = "/^[a-zA-Z\sñáéíóúÁÉÍÓÚ'.]+$/";
+            //Validacción para el caso de que el campo solo tenga texto
             if(!preg_match($pattern, $text)){
+                //Excepción lanzada para el caso de que ingrese números
                 throw new Exception("*Error: El campo no debe de contener números; ".$name_campo);
             }
             return true;
+        //Catch que atrapa las excepciónes generadas anteriormente
         }catch(Exception $e){
+            //Impresión del error en el html
             echo "<p class='error'>" . $e->getMessage() . "</p>";
             return false;
         }
-    } 
+    }
+    //Función qué válida si es un año ingresado correctamente con parametros
     function isValidYear($text,$name_campo){
+        //Uso de la sentención try/catch
         try{
+            //Uso de la expresión regular, solo para admitir números
             $pattern = "/^[0-9]+$/";
+            //Validacción para el caso de que el campo solo tenga números
             if(!preg_match($pattern, $text)){
+                //Excepción lanzada para el caso de que ingrese letras
                 throw new Exception("*Error: El campo no debe de contener letras; ".$name_campo);
             }
+            //Validación para que el campo no tenga valores menores a 1900
             if($text < 1900){
+                //Exepción lanzada para el caso de que el campo ingresado sea mayor a 1900
                 throw new Exception("*Error: El año no debe ser menor a 1900; ".$name_campo);
             }
+            //Validación para que el campo no tenga valores mayores a 2024
             if($text > 2024){
+                //Exepción lanzada para el caso de que el campo ingresado sea mayor a 2024
                 throw new Exception("*Error: El año no debe ser mayor a 2024; ".$name_campo);
             }
             return true;
+        //Catch que atrapa las excepciónes generadas anteriormente
         }catch(Exception $e){
+            //Impresión del error en el html
             echo "<p class='error'>" . $e->getMessage() . "</p>";
             return false;
         }

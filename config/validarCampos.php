@@ -292,7 +292,7 @@
                 return true;
             }else{
                 //Exepción lanzada para el caso de que no sea en formato correcto
-                throw new Exception("*Error: El formato de fecha no es el correcto yyyy-mm-dd");
+                throw new Exception("*Error: Ingresa una fecha correcta yyyy-mm-dd");
             }
         //Catch que atrapa las excepciónes generadas anteriormente
         }catch(Exception $e){    

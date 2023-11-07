@@ -20,7 +20,7 @@
                     </div>
                     <div class="elemento">
                         <label for="year-pelicula">Año</label>
-                        <input type="" id="year-pelicula" name="year-pelicula" >
+                        <input type="number" id="year-pelicula" name="year-pelicula" >
                     </div>
                     <div class="elemento">
                         <label for="clasificacion-pelicula">Clasificación</label>

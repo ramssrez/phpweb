@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    if($_SESSION['user']){
+        $client = $_SESSION['user'];
+    }
+    else{
+    header("Location: ../index.php");
+        die();
+    }
+?>
 <?php 
     if(isset($_POST['submit-director'])){
         $name_director = $_POST['name-director'];

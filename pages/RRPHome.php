@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    if($_SESSION['user']){
+        $client = $_SESSION['user'];
+    }
+    else{
+        header("Location: ../index.php");
+        die();
+    }
+?> 
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -6,17 +16,7 @@
         <link rel="stylesheet" href="../css/styles.css">
         <title>Cine Puebla</title>
     </head>
-    <body class="home">
-        <?php
-            session_start();
-            if($_SESSION['user']){
-                $client = $_SESSION['user'];
-            }
-            else{
-                header("Location: ../index.php");
-                die();
-            }
-        ?>
+    <body class="home">      
         <nav class="navbar">
             <ul>
                 <li>

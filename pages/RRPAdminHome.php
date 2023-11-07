@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+<?php
+    session_start();
+    if($_SESSION['user']){
+        $client = $_SESSION['user'];
+    }
+    else{
+        header("Location: ../index.php");
+        die();
+    }
+?>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
@@ -7,16 +16,6 @@
         <title>Cine Puebla</title>
     </head>
     <body class="home">
-        <?php
-            session_start();
-            if($_SESSION['user']){
-                $client = $_SESSION['user'];
-            }
-            else{
-                header("Location: ../index.php");
-                die();
-            }
-        ?>
         <?php
             include("../componentes/RRPNavegacionAdmin.php");
         ?>

@@ -39,15 +39,28 @@
             </form>
         </div>
         <div class="contenedor-carrusel">
-                <div class="atras botones">
-                    &#60
-                </div>
-                <div class="adelante botones">
-                    &#62
-                </div>
+            <div class="atras botones">
+                &#60
+            </div>
+            <div class="adelante botones">
+                &#62
+            </div>
+            <img src="assets/images/12horas.jpeg" alt="">
+            <h3 class="texto-pelicula">Texto</h3>
+        </div> 
+        
+        <div class="contenedor-slider">
+            <div class="botones-izq-der">
+                &#60
+            </div>
+            <div class="slider-screen">
                 <img src="assets/images/12horas.jpeg" alt="">
-                <h3 class="texto-pelicula">Texto</h3>
-        </div>                
+                <h3>Nombre</h3>
+            </div>
+            <div class="botones-izq-der">
+                &#62
+            </div>
+        </div>
         <script src="assets/JS/carrusel.js"></script>
         <footer class="footer">
             <div class="footer-links">

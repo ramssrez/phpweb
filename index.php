@@ -38,6 +38,7 @@
                 </div>
             </form>
         </div>
+        <h1 class="title-general">Proximos estrenos en la plataforma</h1>
         <div class="contenedor-slider">
             <div class="botones-izq-der izq">
                 &#60
@@ -45,6 +46,7 @@
             <div class="slider-screen">
                 <img id="imagen">
                 <h3 id="textoPel">Nombre</h3>
+                <p id="informacion"></p>
             </div>
             <div class="botones-izq-der der">
                 &#62

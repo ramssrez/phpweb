@@ -379,10 +379,12 @@ li:last-child {
     box-shadow: 0 0 10px rgba(255,255,255,.2);
     filter: saturate(175%);
     transition: transform 0.3s;
+    cursor: pointer;
 }
-.slider-screen h3{
+.slider-screen h3, .slider-screen p{
     padding: 10px;
     color: #fff;
     text-align: center;
+    font-size: 15px;
     font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
 }

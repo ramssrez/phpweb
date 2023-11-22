@@ -25,8 +25,11 @@ var imagenesTotal = [
         "clasificacion": "B"
     }
 ]
-document.imagen.src = imagenesTotal[0].url;
-document.getElementById("textoPel").innerText = imagenesTotal[0].nombre + " - Clasificación: " +imagenesTotal[0].clasificacion;
+document.body.onload = function() {
+    document.imagen.src = imagenesTotal[0].url;
+    document.getElementById("textoPel").innerText = imagenesTotal[0].nombre + " - Clasificación: " +imagenesTotal[0].clasificacion;
+}
+
 var sliderDer = document.querySelector(".der");
 var sliderIzq = document.querySelector(".izq");
 var contadorDos = 0;

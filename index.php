@@ -38,18 +38,6 @@
                 </div>
             </form>
         </div>
-        <!-- 
-        <div class="contenedor-carrusel">
-            <div class="atras botones">
-                &#60
-            </div>
-            <div class="adelante botones">
-                &#62
-            </div>
-            <img src="assets/images/12horas.jpeg" alt="">
-            <h3 class="texto-pelicula">Texto</h3>
-        </div> 
-        -->
         <div class="contenedor-slider">
             <div class="botones-izq-der izq">
                 &#60

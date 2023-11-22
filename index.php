@@ -38,6 +38,7 @@
                 </div>
             </form>
         </div>
+        <!-- 
         <div class="contenedor-carrusel">
             <div class="atras botones">
                 &#60
@@ -48,16 +49,16 @@
             <img src="assets/images/12horas.jpeg" alt="">
             <h3 class="texto-pelicula">Texto</h3>
         </div> 
-        
+        -->
         <div class="contenedor-slider">
-            <div class="botones-izq-der">
+            <div class="botones-izq-der izq">
                 &#60
             </div>
             <div class="slider-screen">
-                <img src="assets/images/12horas.jpeg" alt="">
-                <h3>Nombre</h3>
+                <img name="imagen">
+                <h3 id="textoPel">Nombre</h3>
             </div>
-            <div class="botones-izq-der">
+            <div class="botones-izq-der der">
                 &#62
             </div>
         </div>

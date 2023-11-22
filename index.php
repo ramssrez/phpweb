@@ -38,6 +38,17 @@
                 </div>
             </form>
         </div>
+        <div class="contenedor-carrusel">
+                <div class="atras botones">
+                    &#60
+                </div>
+                <div class="adelante botones">
+                    &#62
+                </div>
+                <img src="assets/images/12horas.jpeg" alt="">
+                <h3 class="texto-pelicula">Texto</h3>
+        </div>                
+        <script src="assets/JS/carrusel.js"></script>
         <footer class="footer">
             <div class="footer-links">
                 <p>RRP-DPW1-noviembre/2023</p>

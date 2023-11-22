@@ -45,7 +45,7 @@
             </div>
             <div class="slider-screen">
                 <img id="imagen">
-                <h3 id="textoPel">Nombre</h3>
+                <h3 id="textoPel"></h3>
                 <p id="informacion"></p>
             </div>
             <div class="botones-izq-der der">

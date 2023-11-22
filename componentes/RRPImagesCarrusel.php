@@ -6,7 +6,7 @@
                 <img src="../assets/images/guerranovias.jpeg" alt="Guerra de Novias">
                 <img src="../assets/images/jovenesbrujas.jpeg" alt="Jovenes Brujas">
                 <img src="../assets/images/miPrimerBeso.jpeg" alt="Mi primer beso">
-                <img src="../assets/images/posdatateamo.jpeg" class="img-fluid rounded-top" alt="Posdata Te Amo">
+                <img src="../assets/images/posdatateamo.jpeg" alt="Posdata Te Amo">
                 <img src="../assets/images/sherk.jpeg" alt="Sherk">
                 <img src="../assets/images/sherk2.jpeg" alt="Sherk 2">
                 <img src="../assets/images/sherk3.jpeg" alt="Sherk 3">

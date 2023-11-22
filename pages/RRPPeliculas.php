@@ -21,38 +21,12 @@
             include("../componentes/RRPNavegacionUser.php");
         ?>
         <h1 class="title-general">Todas las peliculas por ver</h1>
-        <div class="image-container">
-            <div class="image-galery">
-                <img src="../images/12horas.jpeg" alt="Doce horas para sobrevivir">
-                <img src="../images/chicaspesadas.jpeg" alt="Chicas Pesadas">
-                <img src="../images/elhijodechucky.jpeg" alt="El hijo de chucky">
-                <img src="../images/guerranovias.jpeg" alt="Guerra de Novias">
-                <img src="../images/jovenesbrujas.jpeg" alt="Jovenes Brujas">
-                <img src="../images/miPrimerBeso.jpeg" alt="Mi primer beso">
-                <img src="../images/posdatateamo.jpeg" class="img-fluid rounded-top" alt="Posdata Te Amo">
-                <img src="../images/sherk.jpeg" alt="Sherk">
-                <img src="../images/sherk2.jpeg" alt="Sherk 2">
-                <img src="../images/sherk3.jpeg" alt="Sherk 3">
-                <img src="../images/supercool.jpeg" alt="Super Cool">
-                <img src="../images/ylasrubias.jpeg" alt="Donde están las Rubias">
-            </div>
-        </div>
-        <div class="image-container">
-            <div class="image-galery">
-                <img src="../images/12horas.jpeg" alt="Doce horas para sobrevivir">
-                <img src="../images/chicaspesadas.jpeg" alt="Chicas Pesadas">
-                <img src="../images/elhijodechucky.jpeg" alt="El hijo de chucky">
-                <img src="../images/guerranovias.jpeg" alt="Guerra de Novias">
-                <img src="../images/jovenesbrujas.jpeg" alt="Jovenes Brujas">
-                <img src="../images/miPrimerBeso.jpeg" alt="Mi primer beso">
-                <img src="../images/posdatateamo.jpeg" class="img-fluid rounded-top" alt="Posdata Te Amo">
-                <img src="../images/sherk.jpeg" alt="Sherk">
-                <img src="../images/sherk2.jpeg" alt="Sherk 2">
-                <img src="../images/sherk3.jpeg" alt="Sherk 3">
-                <img src="../images/supercool.jpeg" alt="Super Cool">
-                <img src="../images/ylasrubias.jpeg" alt="Donde están las Rubias">
-            </div>
-        </div>        
+        <?php
+            include("../componentes/RRPImagesCarrusel.php");
+        ?>
+        <?php
+            include("../componentes/RRPImagesCarrusel.php");
+        ?>       
         <footer class="footer">
             <div class="footer-links">
                 <p>RRP-DPW1-noviembre/2023</p>

@@ -387,4 +387,18 @@ li:last-child {
     text-align: center;
     font-size: 15px;
     font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
+    font-weight: 900;
+}
+.title-estreno{
+    color: #e50914;
+    font-size: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    padding-top: 10px;
+    font-weight: 900;
+    box-shadow: 0 0 10px rgba(255,255,255,.6);
+    background-color: rgba(0,0,0,.7);
+    margin: auto;
+    padding: 10px;
+    border-radius: 15px;
 }

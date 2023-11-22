@@ -24,7 +24,9 @@
         <?php
             include("../componentes/RRPImagesCarrusel.php");
         ?>
-        <script src="../assets/JS/carrusel.js"></script>
+        <?php
+            include("../componentes/RRPImagesCarrusel.php");
+        ?>
         <footer class="footer">
             <div class="footer-links">
                 <p>RRP-DPW1-noviembre/2023</p>

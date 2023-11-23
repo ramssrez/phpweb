@@ -58,6 +58,10 @@
                         <label for="nacimiento-cliente">Fecha de nacimiento del cliente</label>
                         <input type="date" id="nacimiento-cliente" name="nacimiento-cliente" >
                     </div>
+                    <div class="elemento">
+                        <label for="nacimiento-director">Prueba</label>
+                        <input type="text" id="prueba" name="prueba">
+                    </div>
                     <?php
                         include("../config/validarCampos.php");
                     ?>
@@ -126,6 +130,7 @@
                 </table>
             </div>
         </div>
+        <script src="../assets/JS/validacionCurp.js"></script>
         <footer class="footer">
             <div class="footer-links">
                 <p>RRP-DPW1-noviembre/2023</p>

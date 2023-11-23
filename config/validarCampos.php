@@ -9,6 +9,7 @@
             $apellido_ma_cliente = $_POST['apellido-ma-cliente'];
             $rfc_cliente = $_POST['rfc-cliente'];
             $curp_cliente = $_POST['curp-cliente'];
+            $nacimiento_cliente = $_POST['nacimiento-cliente'];
             /*
             $curp_Prueba = "RAPR920627HMCMRL02";
             $rfc_prueba = "RAPR920627SCA";
@@ -46,6 +47,13 @@
                 return false;
             }
             if(!isValidateCURP($curp_cliente,"Campo CURP")){
+                return false;
+            }
+            if(empty($nacimiento_cliente)){
+                echo "<p class='error'>*El campo de nacimiento del cliente esta vacio</p>";
+                return false;
+            }
+            if(!isValidDate($nacimiento_cliente)){
                 return false;
             }
             return true;

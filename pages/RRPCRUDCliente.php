@@ -15,6 +15,7 @@
         $apellido_ma_cliente = $_POST['apellido-ma-cliente'];
         $rfc_cliente = $_POST['rfc-cliente'];
         $curp_cliente = $_POST['curp-cliente'];
+        $nacimiento_cliente = $_POST['nacimiento-cliente'];
     }
 ?>
 <!DOCTYPE html>
@@ -52,6 +53,10 @@
                     <div class="elemento">
                         <label for="curp-cliente">CURP</label>
                         <input type="text" id="curp-cliente"  name="curp-cliente">
+                    </div>
+                    <div class="elemento">
+                        <label for="nacimiento-cliente">Fecha de nacimiento del cliente</label>
+                        <input type="date" id="nacimiento-cliente" name="nacimiento-cliente" >
                     </div>
                     <?php
                         include("../config/validarCampos.php");

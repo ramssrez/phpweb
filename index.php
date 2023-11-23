@@ -52,6 +52,21 @@
                 &#62
             </div>
         </div>
+        <label for="genero" class="form-label">Género:</label>
+                        <select name="genero" id="genero" class="form-select" required>
+                            <option value="">Seleccionar...</option>
+                            <?php
+                                require 'config/conexionDB.php';
+                                $sqlGenero = "SELECT id, nombre FROM genero";
+                                $generos = $conn->query($sqlGenero);
+                            ?>
+                            <?php
+                                while($row_genero = $generos->fetch_assoc()){ ?>
+                                    <option value="<?php echo $row_genero["id"]; ?> ">
+                                        <?= $row_genero["nombre"]?>
+                                    </option>    
+                            <?php }?>
+                        </select>
         <script src="assets/JS/carrusel.js"></script>
         <footer class="footer">
             <div class="footer-links">

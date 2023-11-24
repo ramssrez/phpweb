@@ -47,6 +47,13 @@
                         <input type="text" id="apellido-ma-cliente" name="apellido-ma-cliente" >
                     </div>
                     <div class="elemento">
+                        <label for="sexo">Sexo</label>
+                        <select id="sexoCliente">
+                            <option value="1">Masculino</option>
+                            <option value="2">Femenino</option>
+                        </select>
+                    </div>
+                    <div class="elemento">
                         <label for="rfc-cliente">RFC</label>
                         <input type="text" id="rfc-cliente" name="rfc-cliente">
                     </div>

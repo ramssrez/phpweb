@@ -102,6 +102,25 @@ body{
     font-size: 15px;
     font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
 }
+.contenedor-crud .elemento select{
+    width: 100%;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 7px;
+    color: #fff;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    border: 1px solid #fff;
+    font-size: 15px;
+    font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
+}
+.contenedor-crud .elemento select option{
+    color: #fff;
+    font-size: 15px;
+    font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
+    background: rgba(0,0,0,.8);
+}
+
 #btn-agregar{
     background-color: #1be509;
     border:none;

@@ -11,6 +11,7 @@ var apellidoPaClienteInput = document.getElementById("apellido-pa-cliente");
 var apellidoMaClienteInput = document.getElementById("apellido-ma-cliente");
 var nacimientoClienteInput = document.getElementById("nacimiento-cliente"); 
 var formCliente = document.getElementById("formCliente");
+var sexoCliente = document.getElementById("sexoCliente");
 
 var pruebaInput =  document.getElementById("prueba");
 
@@ -26,8 +27,14 @@ function actualizarCurp(){
         var year = partesFecha[0].substring(2, 4);
         var mes = partesFecha[1];
         var dia = partesFecha[2]
+        var sexo = "";
+        if(sexoCliente.value == 1){
+            sexo = "M";
+        }else if(sexoCliente.value == 2){
+            sexo = "F"
+        }
         console.log(letraApPaterno+letraApMaterno+letraNombre);
-        pruebaInput.value = letraApPaterno+letraApMaterno+letraNombre+year+mes+dia;
+        pruebaInput.value = letraApPaterno+letraApMaterno+letraNombre+year+mes+dia+sexo;
         return true;
     }else{
         var errorParrafo = document.getElementById("error");

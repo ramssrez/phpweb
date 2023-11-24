@@ -1,27 +1,32 @@
 console.log("Si se vinculo el JS");
 const expresiones = {
-	nombreApellidos: /^[a-zA-Z\sñáéíóúÁÉÍÓÚ]+$/, // Solo palabras con acentos
+	nombreApellidos: /^[a-zA-Z\sñáéíóúÁÉÍÓÚ]+$/,// Solo palabras con acentos
+}
+/*
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
 	password: /^.{4,12}$/, // 4 a 12 digitos.
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	telefono: /^\d{7,14}$/ // 7 a 14 numeros.
-}
+*/
 var nombreClienteInput = document.getElementById("name-cliente");
 var apellidoPaClienteInput = document.getElementById("apellido-pa-cliente");
 var apellidoMaClienteInput = document.getElementById("apellido-ma-cliente");
 var nacimientoClienteInput = document.getElementById("nacimiento-cliente"); 
 var formCliente = document.getElementById("formCliente");
 var sexoCliente = document.getElementById("sexoCliente");
+var estadoCliente = document.getElementById("estadoCliente");
+var curpCliente =  document.getElementById("curp-cliente");
+//curpCliente.disabled = true;
 
-var pruebaInput =  document.getElementById("prueba");
-
-pruebaInput.disabled = true;
 function actualizarCurp(){
     if(validarInputNombre() && validarInputApellidoMa() && validarInputApellidoPa()){
         console.log("Esto es real");
         var letraNombre = nombreClienteInput.value.charAt(0).toUpperCase();
+        var lastLetraNombre = nombreClienteInput.value.substr(-1).toUpperCase();
         var letraApPaterno = apellidoPaClienteInput.value.substring(0, 2).toUpperCase();
+        var lastLetraApPaterno = apellidoPaClienteInput.value.substr(-1).toUpperCase();
         var letraApMaterno = nombreClienteInput.value.charAt(0).toUpperCase();
+        var lastLetraApMaterno = apellidoMaClienteInput.value.substr(-1).toUpperCase();
         var fechaText = nacimientoClienteInput.value;
         var partesFecha = fechaText.split("-");
         var year = partesFecha[0].substring(2, 4);
@@ -33,8 +38,13 @@ function actualizarCurp(){
         }else if(sexoCliente.value == 2){
             sexo = "F"
         }
-        console.log(letraApPaterno+letraApMaterno+letraNombre);
-        pruebaInput.value = letraApPaterno+letraApMaterno+letraNombre+year+mes+dia+sexo;
+        var estado = estadoCliente.options[estadoCliente.selectedIndex].text;
+        var claveEStado = estado.substring(estado.length - 2);
+        var aleatorioUno = Math.floor(Math.random() * 10);
+        var aleatorioDos = Math.floor(Math.random() * 10);
+        var curp = letraApPaterno+letraApMaterno+letraNombre+year+mes+dia+sexo+claveEStado+lastLetraNombre+lastLetraApPaterno+lastLetraApMaterno+aleatorioUno+aleatorioDos; 
+        console.log(curp);
+        curpCliente.value = curp;
         return true;
     }else{
         var errorParrafo = document.getElementById("error");
@@ -70,14 +80,6 @@ function validarInputApellidoMa(){
         return true;
     }   
 }
-function validarFormulario(){
-    if(validarInput()){
-        console.log("Si ha pasado");
-        actualizarResultado();
-    }else{
-        console.log("No ha pasado");
-    }
-}
 function mensajeError(campo){
     var errorParrafo = document.getElementById("error");
     errorParrafo.className = "error";
@@ -91,7 +93,7 @@ function limpiarError(){
 function prueba(e){
     if(validarInputNombre() && validarInputApellidoMa() && validarInputApellidoPa() && actualizarCurp()){
         console.log("Si estan llenos");
-        e.preventDefault();
+        //e.preventDefault();
     }else{
         console.log("no estan llenos");
         e.preventDefault();

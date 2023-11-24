@@ -49,8 +49,39 @@
                     <div class="elemento">
                         <label for="sexo">Sexo</label>
                         <select id="sexoCliente">
-                            <option value="1">Masculino</option>
-                            <option value="2">Femenino</option>
+                            <?php
+                                require '../config/conexionDB.php';
+                                $sqlSexoRead = "SELECT id_sexo, tipo FROM tblsexo";
+                                $sexos = $conn->query($sqlSexoRead);
+                            ?>
+                            <?php
+                                while($row_sexos = $sexos->fetch_assoc()){ ?>
+                                    <option value="<?php echo $row_sexos["id_sexo"]; ?> ">
+                                        <?= $row_sexos["tipo"]?>
+                                    </option>    
+                            <?php }?>
+                            <?php
+                                mysqli_close($conn);
+                            ?>
+                        </select>
+                    </div>
+                    <div class="elemento">
+                        <label for="sexo">Estado</label>
+                        <select id="estadoCliente">
+                            <?php
+                                require '../config/conexionDB.php';
+                                $sqlEstadoRead = "SELECT id_estado, nombre, abreviacion FROM tblestado";
+                                $estados = $conn->query($sqlEstadoRead);
+                            ?>
+                            <?php
+                                while($row_estado = $estados->fetch_assoc()){ ?>
+                                    <option value="<?php echo $row_estado["id_estado"]; ?> ">
+                                        <?= $row_estado["nombre"]?>-<?= $row_estado["abreviacion"]?>
+                                    </option>    
+                            <?php }?>
+                            <?php
+                                mysqli_close($conn);
+                            ?>
                         </select>
                     </div>
                     <div class="elemento">
@@ -58,16 +89,12 @@
                         <input type="text" id="rfc-cliente" name="rfc-cliente">
                     </div>
                     <div class="elemento">
-                        <label for="curp-cliente">CURP</label>
-                        <input type="text" id="curp-cliente"  name="curp-cliente">
-                    </div>
-                    <div class="elemento">
                         <label for="nacimiento-cliente">Fecha de nacimiento del cliente</label>
                         <input type="date" id="nacimiento-cliente" name="nacimiento-cliente" >
                     </div>
                     <div class="elemento">
-                        <label for="nacimiento-director">Prueba</label>
-                        <input type="text" id="prueba" name="prueba">
+                        <label for="curp-cliente">CURP</label>
+                        <input type="text" id="curp-cliente"  name="curp-cliente">
                     </div>
                     <p id="error"></p>
                     <?php

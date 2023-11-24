@@ -11,7 +11,6 @@ var apellidoPaClienteInput = document.getElementById("apellido-pa-cliente");
 var apellidoMaClienteInput = document.getElementById("apellido-ma-cliente");
 var nacimientoClienteInput = document.getElementById("nacimiento-cliente"); 
 
-//var formCliente = document.getElementById("formCliente");
 var pruebaInput =  document.getElementById("prueba");
 
 pruebaInput.disabled = true;
@@ -23,26 +22,29 @@ function actualizarResultado(){
     pruebaInput.value = letraApPaterno+letraApMaterno+letraNombre+nacimientoClienteInput.value;
 }
 function validarInputNombre(){
-    var errorParrafo = document.getElementById("error");
     if (!expresiones.nombreApellidos.test(nombreClienteInput.value)) {
-        errorParrafo.className = "error";
-        errorParrafo.innerHTML = "*Error: El campo no debe de contener números ni caracteres especiales; Campo nombre" ;
+        mensajeError("Campo nombre");
         return false;
     }else{
-        errorParrafo.className = "";
-        errorParrafo.innerHTML = "";
+        limpiarError();
+        return true;
+    }  
+}
+function validarInputApellidoPa(){
+    if (!expresiones.nombreApellidos.test(apellidoPaClienteInput.value)) {
+        mensajeError("Campo apellido paterno");
+        return false;
+    }else{
+        limpiarError();
         return true;
     }   
 }
-function validarInputApellidoPa(){
-    var errorParrafo = document.getElementById("error");
-    if (!expresiones.nombreApellidos.test(apellidoPaClienteInput.value)) {
-        errorParrafo.className = "error";
-        errorParrafo.innerHTML = "*Error: El campo no debe de contener números ni caracteres especiales; Campo apellido paterno" ;
+function validarInputApellidoMa(){
+    if (!expresiones.nombreApellidos.test(apellidoMaClienteInput.value)) {
+        mensajeError("Campo apellido materno");
         return false;
     }else{
-        errorParrafo.className = "";
-        errorParrafo.innerHTML = "";
+        limpiarError();
         return true;
     }   
 }
@@ -54,9 +56,16 @@ function validarFormulario(){
         console.log("No ha pasado");
     }
 }
-//input.addEventListener('keyup', validarFormulario);
+function mensajeError(campo){
+    var errorParrafo = document.getElementById("error");
+    errorParrafo.className = "error";
+    errorParrafo.innerHTML = "*Error: El campo no debe de contener números ni caracteres especiales; "+ campo;
+}
+function limpiarError(){
+    var errorParrafo = document.getElementById("error");
+    errorParrafo.className = "";
+    errorParrafo.innerHTML = "";
+}
 nombreClienteInput.addEventListener("input",validarInputNombre);
 apellidoPaClienteInput.addEventListener("input",validarInputApellidoPa);
-//formCliente.addEventListener("submit",validarFormulario);
-//apellidoPaClienteInput.addEventListener("input",actualizarResultado);
-//apellidoMaClienteInput.addEventListener("input",actualizarResultado);
+apellidoMaClienteInput.addEventListener("input",validarInputApellidoMa)

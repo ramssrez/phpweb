@@ -33,7 +33,7 @@
         <div class="contenedor-table-crud">
             <div class="contenedor-crud">
                 <h2>Registro de Cliente</h2>
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="form-login" id="form-login" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="formCliente" id="formCliente" method="post">
                     <div class="elemento">
                         <label for="name-cliente">Nombre</label>
                         <input type="text" id="name-cliente" name="name-cliente">
@@ -62,6 +62,7 @@
                         <label for="nacimiento-director">Prueba</label>
                         <input type="text" id="prueba" name="prueba">
                     </div>
+                    <p id="error"></p>
                     <?php
                         include("../config/validarCampos.php");
                     ?>

@@ -16,7 +16,7 @@ var formCliente = document.getElementById("formCliente");
 var sexoCliente = document.getElementById("sexoCliente");
 var estadoCliente = document.getElementById("estadoCliente");
 var curpCliente =  document.getElementById("curp-cliente");
-//curpCliente.disabled = true;
+var rfcCliente = document.getElementById("rfc-cliente");
 
 function actualizarCurp(){
     if(validarInputNombre() && validarInputApellidoMa() && validarInputApellidoPa()){
@@ -25,7 +25,7 @@ function actualizarCurp(){
         var lastLetraNombre = nombreClienteInput.value.substr(-1).toUpperCase();
         var letraApPaterno = apellidoPaClienteInput.value.substring(0, 2).toUpperCase();
         var lastLetraApPaterno = apellidoPaClienteInput.value.substr(-1).toUpperCase();
-        var letraApMaterno = nombreClienteInput.value.charAt(0).toUpperCase();
+        var letraApMaterno = apellidoMaClienteInput.value.charAt(0).toUpperCase();
         var lastLetraApMaterno = apellidoMaClienteInput.value.substr(-1).toUpperCase();
         var fechaText = nacimientoClienteInput.value;
         var partesFecha = fechaText.split("-");
@@ -43,8 +43,10 @@ function actualizarCurp(){
         var aleatorioUno = Math.floor(Math.random() * 10);
         var aleatorioDos = Math.floor(Math.random() * 10);
         var curp = letraApPaterno+letraApMaterno+letraNombre+year+mes+dia+sexo+claveEStado+lastLetraNombre+lastLetraApPaterno+lastLetraApMaterno+aleatorioUno+aleatorioDos; 
+        var rfc = letraApPaterno+letraApMaterno+letraNombre+year+mes+dia+sexo+claveEStado;
         console.log(curp);
         curpCliente.value = curp;
+        rfcCliente.value = rfc;
         return true;
     }else{
         var errorParrafo = document.getElementById("error");

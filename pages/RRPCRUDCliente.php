@@ -115,54 +115,46 @@
                         <th>Nombre</th>
                         <th>Apellido P.</th>
                         <th>Apellido M.</th>
-                        <th>Nacionalidad</th>
                         <th>F. Nacimiento</th>
+                        <th>CURP</th>
+                        <th>RFC</th>
+                        <th>Estado</th>
+                        <th>Sexo</th>
                         <th></th>
                         <th></th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>01</td>
-                            <td>Leonardo</td>
-                            <td>Di</td>
-                            <td>Caprio</td>
-                            <td>EUA</td>
-                            <td>15/08/1980</td>
-                            <td>
-                                <button id="btn-actualizar">Actualizar</button>
-                            </td>
-                            <td>
-                                <button id="btn-eliminar">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>Leonardo</td>
-                            <td>Di</td>
-                            <td>Caprio</td>
-                            <td>EUA</td>
-                            <td>15/08/1980</td>
-                            <td>
-                                <button id="btn-actualizar">Actualizar</button>
-                            </td>
-                            <td>
-                                <button id="btn-eliminar">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>Leonardo</td>
-                            <td>Di</td>
-                            <td>Caprio</td>
-                            <td>EUA</td>
-                            <td>15/08/1980</td>
-                            <td>
-                                <button id="btn-actualizar">Actualizar</button>
-                            </td>
-                            <td>
-                                <button id="btn-eliminar">Eliminar</button>
-                            </td>
-                        </tr>
+                        <?php
+                            require '../config/conexionDB.php';
+                            $sqlClienteRead = "SELECT c.id_cliente, c.nombre , c.ap_paterno, c.ap_materno,c.fecha_nacimiento,
+                                c.curp, c.rfc,  e.nombre AS nombre_estado, s.tipo AS tipo_sexo FROM tblcliente c 
+                                JOIN tblestado e ON c.id_estado = e.id_estado 
+                                JOIN tblsexo s ON c.id_sexo = s.id_sexo;";
+                            $clientesRead = $conn->query($sqlClienteRead);
+                        ?>
+                        <?php
+                            while($row_cliente = $clientesRead->fetch_assoc()){ ?>
+                                <tr>
+                                    <td><?= $row_cliente["id_cliente"]?></td>
+                                    <td><?= $row_cliente["nombre"]?></td>
+                                    <td><?= $row_cliente["ap_paterno"]?></td>
+                                    <td><?= $row_cliente["ap_materno"]?></td>
+                                    <td><?= $row_cliente["fecha_nacimiento"]?></td>
+                                    <td><?= $row_cliente["curp"]?></td>
+                                    <td><?= $row_cliente["rfc"]?></td>
+                                    <td><?= $row_cliente["nombre_estado"]?></td>
+                                    <td><?= $row_cliente["tipo_sexo"]?></td>
+                                    <td>
+                                        <button id="btn-actualizar">Actualizar</button>
+                                    </td>
+                                    <td>
+                                        <button id="btn-eliminar">Eliminar</button>
+                                    </td>
+                                </tr>  
+                        <?php }?>
+                        <?php
+                            mysqli_close($conn);
+                        ?>
                     </tbody>
                 </table>
             </div>

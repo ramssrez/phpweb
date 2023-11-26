@@ -16,6 +16,8 @@
         $rfc_cliente = $_POST['rfc-cliente'];
         $curp_cliente = $_POST['curp-cliente'];
         $nacimiento_cliente = $_POST['nacimiento-cliente'];
+        $sexo = $_POST['sexoCliente'];
+        $estado = $_POST['estadoCliente'];
     }
 ?>
 <!DOCTYPE html>
@@ -48,7 +50,7 @@
                     </div>
                     <div class="elemento">
                         <label for="sexo">Sexo</label>
-                        <select id="sexoCliente">
+                        <select id="sexoCliente" name="sexoCliente">
                             <?php
                                 require '../config/conexionDB.php';
                                 $sqlSexoRead = "SELECT id_sexo, tipo FROM tblsexo";
@@ -66,8 +68,8 @@
                         </select>
                     </div>
                     <div class="elemento">
-                        <label for="sexo">Estado</label>
-                        <select id="estadoCliente">
+                        <label for="estado">Estado</label>
+                        <select id="estadoCliente" name="estadoCliente">
                             <?php
                                 require '../config/conexionDB.php';
                                 $sqlEstadoRead = "SELECT id_estado, nombre, abreviacion FROM tblestado";
@@ -85,16 +87,16 @@
                         </select>
                     </div>
                     <div class="elemento">
-                        <label for="rfc-cliente">RFC</label>
-                        <input type="text" id="rfc-cliente" name="rfc-cliente">
-                    </div>
-                    <div class="elemento">
                         <label for="nacimiento-cliente">Fecha de nacimiento del cliente</label>
                         <input type="date" id="nacimiento-cliente" name="nacimiento-cliente" >
                     </div>
                     <div class="elemento">
                         <label for="curp-cliente">CURP</label>
                         <input type="text" id="curp-cliente"  name="curp-cliente">
+                    </div>
+                    <div class="elemento">
+                        <label for="rfc-cliente">RFC</label>
+                        <input type="text" id="rfc-cliente" name="rfc-cliente">
                     </div>
                     <p id="error"></p>
                     <?php

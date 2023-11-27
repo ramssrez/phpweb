@@ -17,10 +17,11 @@ var sexoCliente = document.getElementById("sexoCliente");
 var estadoCliente = document.getElementById("estadoCliente");
 var curpCliente =  document.getElementById("curp-cliente");
 var rfcCliente = document.getElementById("rfc-cliente");
+var btnAgregar = document.getElementById("btn-agregar");
+btnAgregar.disabled = true;
 
 function actualizarCurp(){
     if(validarInputNombre() && validarInputApellidoMa() && validarInputApellidoPa()){
-        console.log("Esto es real");
         var letraNombre = nombreClienteInput.value.charAt(0).toUpperCase();
         var lastLetraNombre = nombreClienteInput.value.substr(-1).toUpperCase();
         var letraApPaterno = apellidoPaClienteInput.value.substring(0, 2).toUpperCase();
@@ -44,9 +45,9 @@ function actualizarCurp(){
         var aleatorioDos = Math.floor(Math.random() * 10);
         var curp = letraApPaterno+letraApMaterno+letraNombre+year+mes+dia+sexo+claveEStado+lastLetraNombre+lastLetraApPaterno+lastLetraApMaterno+aleatorioUno+aleatorioDos; 
         var rfc = letraApPaterno+letraApMaterno+letraNombre+year+mes+dia+sexo+claveEStado;
-        console.log(curp);
         curpCliente.value = curp;
         rfcCliente.value = rfc;
+        btnAgregar.disabled = false;
         return true;
     }else{
         var errorParrafo = document.getElementById("error");
@@ -95,14 +96,42 @@ function limpiarError(){
 function prueba(e){
     if(validarInputNombre() && validarInputApellidoMa() && validarInputApellidoPa() && actualizarCurp()){
         console.log("Si estan llenos");
-        //e.preventDefault();
+        e.preventDefault();
     }else{
         console.log("no estan llenos");
         e.preventDefault();
+    }
+}
+function validarCampoCurp(){
+    if(curpCliente.value.length != 18){
+        var errorParrafo = document.getElementById("error");
+        errorParrafo.className = "error";
+        errorParrafo.innerHTML = "*Error: El CURP, debe tener 18 caracteres en total; ";
+        btnAgregar.disabled = true;
+    }else{
+        var errorParrafo = document.getElementById("error");
+        errorParrafo.className = "";
+        errorParrafo.innerHTML = "";
+        btnAgregar.disabled = false;
+    }
+}
+function validarCampoRfc(){
+    if(curpCliente.value.length != 13){
+        var errorParrafo = document.getElementById("error");
+        errorParrafo.className = "error";
+        errorParrafo.innerHTML = "*Error: El RFC, debe tener 13 caracteres en total; ";
+        btnAgregar.disabled = true;
+    }else{
+        var errorParrafo = document.getElementById("error");
+        errorParrafo.className = "";
+        errorParrafo.innerHTML = "";
+        btnAgregar.disabled = false;
     }
 }
 nombreClienteInput.addEventListener("input",validarInputNombre);
 apellidoPaClienteInput.addEventListener("input",validarInputApellidoPa);
 apellidoMaClienteInput.addEventListener("input",validarInputApellidoMa)
 nacimientoClienteInput.addEventListener("input",actualizarCurp)
+curpCliente.addEventListener("input",validarCampoCurp);
+rfcCliente.addEventListener("input",validarCampoRfc)
 formCliente.addEventListener("submit",prueba);

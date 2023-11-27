@@ -122,7 +122,7 @@ body{
 }
 
 #btn-agregar{
-    background-color: #1be509;
+    background-color: rgb(28, 230, 10);
     border:none;
     letter-spacing: 2px;
     cursor: pointer;
@@ -132,6 +132,13 @@ body{
     border-radius: 10px;
     font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
 }
+#btn-agregar:disabled {
+    background-color: rgb(28, 230, 10,.6); /* Color cuando está deshabilitado */
+    cursor:default;
+}
+#btn-agregar.enabled{
+    background-color: rgb(28, 230, 10);
+} 
 #btn-actualizar{
     background-color: #3e3e3a;
     padding: 10px;

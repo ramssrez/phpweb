@@ -6,19 +6,16 @@
     }
     */
     if(validarCamposCliente()){
-        /**
-         *$sqlEstadoRead = "SELECT id_estado, nombre, abreviacion FROM tblestado";
-         *$estados = $conn->query($sqlEstadoRead);
-         */
-        echo "<p class='succesful'>*Datos enviados correctamente</p>";
-        echo "Nombre: ".$name_cliente;
-        echo "Apellido Pa: ".$apellido_pa_cliente;
-        echo "Apellido Ma:".$apellido_ma_cliente;
-        echo "Sexo: ".$sexo;
-        echo "Estado: ".$estado;
-        echo "Curp: ".$curp_cliente;
-        echo "RFC: ".$rfc_cliente;
-        echo "Nacimiento: ".$nacimiento_cliente;
+        $sqlInsertCliente = "INSERT INTO tblcliente (nombre, ap_paterno, ap_materno, rfc, curp, 
+            fecha_nacimiento, id_estado, id_sexo) VALUES ('$name_cliente', '$apellido_pa_cliente', 
+            '$apellido_ma_cliente', '$rfc_cliente', '$curp_cliente', '$nacimiento_cliente', '$estado', '$sexo');
+        ";
+        if(mysqli_query($conn,$sqlInsertCliente)){
+            echo "<p class='succesful'>*Datos enviados correctamente</p>";
+        }else{
+            echo "<p class='error'>Error: No se enviaron los datos correctamente</p>";
+        }
+        mysqli_close($conn);
     }
     function validarCamposCliente(){
         if(isset($_POST['submit-cliente'])){
@@ -30,10 +27,6 @@
             $nacimiento_cliente = $_POST['nacimiento-cliente'];
             $sexo = $_POST['sexoCliente'];
             $estado = $_POST['estadoCliente'];
-            /*
-            $curp_Prueba = "RAPR920627HMCMRL02";
-            $rfc_prueba = "RAPR920627SCA";
-            */
             if(empty($name_cliente)){
                 echo "<p class='error'>*El campo nombre del cliente esta vacio</p>";
                 return false;

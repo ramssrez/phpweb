@@ -57,6 +57,7 @@ function actualizarCurp(){
     }
 }
 function validarInputNombre(){
+    removeSuccesfulP();
     if (!expresiones.nombreApellidos.test(nombreClienteInput.value)) {
         mensajeError("Campo nombre");
         return false;
@@ -65,7 +66,14 @@ function validarInputNombre(){
         return true;
     }  
 }
+function removeSuccesfulP(){
+    var elementoParrafo = document.querySelector(".succesful");
+    if(elementoParrafo !== null && elementoParrafo !== undefined){
+        elementoParrafo.remove();
+    }
+}
 function validarInputApellidoPa(){
+    removeSuccesfulP();
     if (!expresiones.nombreApellidos.test(apellidoPaClienteInput.value)) {
         mensajeError("Campo apellido paterno");
         return false;
@@ -75,6 +83,7 @@ function validarInputApellidoPa(){
     }   
 }
 function validarInputApellidoMa(){
+    removeSuccesfulP();
     if (!expresiones.nombreApellidos.test(apellidoMaClienteInput.value)) {
         mensajeError("Campo apellido materno");
         return false;
@@ -93,13 +102,14 @@ function limpiarError(){
     errorParrafo.className = "";
     errorParrafo.innerHTML = "";
 }
-function prueba(e){
-    if(validarInputNombre() && validarInputApellidoMa() && validarInputApellidoPa() && actualizarCurp()){
+function validarForm(e){
+    if(!validarInputNombre() && !validarInputApellidoMa() && !validarInputApellidoPa() && !actualizarCurp()){
         console.log("Si estan llenos");
         e.preventDefault();
-    }else{
-        console.log("no estan llenos");
-        e.preventDefault();
+        var errorParrafo = document.getElementById("error");
+        errorParrafo.className = "error";
+        errorParrafo.innerHTML = "*Error: Hay campos vacios en el formulario; ";
+    
     }
 }
 function validarCampoCurp(){
@@ -116,7 +126,7 @@ function validarCampoCurp(){
     }
 }
 function validarCampoRfc(){
-    if(curpCliente.value.length != 13){
+    if(rfcCliente.value.length != 13){
         var errorParrafo = document.getElementById("error");
         errorParrafo.className = "error";
         errorParrafo.innerHTML = "*Error: El RFC, debe tener 13 caracteres en total; ";
@@ -134,4 +144,4 @@ apellidoMaClienteInput.addEventListener("input",validarInputApellidoMa)
 nacimientoClienteInput.addEventListener("input",actualizarCurp)
 curpCliente.addEventListener("input",validarCampoCurp);
 rfcCliente.addEventListener("input",validarCampoRfc)
-formCliente.addEventListener("submit",prueba);
+formCliente.addEventListener("submit",validarForm);

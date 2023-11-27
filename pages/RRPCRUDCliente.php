@@ -129,7 +129,8 @@
                             $sqlClienteRead = "SELECT c.id_cliente, c.nombre , c.ap_paterno, c.ap_materno,c.fecha_nacimiento,
                                 c.curp, c.rfc,  e.nombre AS nombre_estado, s.tipo AS tipo_sexo FROM tblcliente c 
                                 JOIN tblestado e ON c.id_estado = e.id_estado 
-                                JOIN tblsexo s ON c.id_sexo = s.id_sexo;";
+                                JOIN tblsexo s ON c.id_sexo = s.id_sexo 
+                                ORDER BY c.id_cliente ASC;";
                             $clientesRead = $conn->query($sqlClienteRead);
                         ?>
                         <?php

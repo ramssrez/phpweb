@@ -9,16 +9,17 @@ const expresiones = {
 	telefono: /^\d{7,14}$/ // 7 a 14 numeros.
 */
 //Declaración de variables del DOM que se van a modificar conforme el flujo del sitio web
+console.log("Validacion curp");
 var nombreClienteInput = document.getElementById("name-cliente");
 var apellidoPaClienteInput = document.getElementById("apellido-pa-cliente");
 var apellidoMaClienteInput = document.getElementById("apellido-ma-cliente");
 var nacimientoClienteInput = document.getElementById("nacimiento-cliente"); 
-var formCliente = document.getElementById("formCliente");
 var sexoCliente = document.getElementById("sexoCliente");
 var estadoCliente = document.getElementById("estadoCliente");
 var curpCliente =  document.getElementById("curp-cliente");
 var rfcCliente = document.getElementById("rfc-cliente");
 var btnAgregar = document.getElementById("btn-agregar");
+var formCliente = document.getElementById("formCliente");
 btnAgregar.disabled = true;
 //Función que actualiza el curpo con la entrada de los datos que provengan de los inpuys
 function actualizarCurp(){
@@ -119,7 +120,6 @@ function validarForm(e){
         var errorParrafo = document.getElementById("error");
         errorParrafo.className = "error";
         errorParrafo.innerHTML = "*Error: Hay campos vacios en el formulario; ";
-    
     }
 }
 //Función que valida que el curp cuenta con exactamenre 18 caracteres

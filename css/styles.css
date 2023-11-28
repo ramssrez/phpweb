@@ -141,17 +141,26 @@ body{
 } 
 #btn-actualizar{
     background-color: #3e3e3a;
-    padding: 10px;
+    padding: 5px;
     border-radius: 10px;
     color: #fff;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+}
+#btn-actualizar:hover{
+    background-color: rgb(63, 63, 59,.7);
+
 }
 #btn-eliminar{
     background-color: #e50914;
-    padding: 10px;
+    padding: 5px;
     border-radius: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #fff;
+    text-decoration: none;
+}
+#btn-eliminar:hover{
+    background-color: rgb(230, 10, 21,.7);
 }
 .contenedor-table-crud{
     display: flex;
@@ -182,7 +191,7 @@ body{
     color: #e50914;
 }
 .table-crud tbody tr{
-    cursor: pointer;
+    cursor: pointer;   
 }
 .table-crud h2{
     font-family: Verdana, Geneva, Tahoma, sans-serif;

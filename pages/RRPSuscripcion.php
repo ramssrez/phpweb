@@ -69,8 +69,8 @@
                     <tbody>
                         <?php
                             require '../config/conexionDB.php';
-                            $sqlClienteRead = "SELECT id_cliente, nombre , ap_paterno, ap_materno FROM tblcliente
-                                ORDER BY id_cliente ASC;";
+                            $sqlClienteRead = "SELECT c.id_cliente, c.nombre , c.ap_paterno, c.ap_materno FROM tblcliente c LEFT JOIN
+                                tblsuscripcion m ON c.id_cliente = m.id_cliente WHERE m.id_membresia IS NULL;";
                             $clientesRead = $conn->query($sqlClienteRead);
                         ?>
                         <?php
@@ -79,7 +79,7 @@
                                     <td><?= $row_cliente["id_cliente"]?></td>
                                     <td><?= $row_cliente["nombre"]?></td>
                                     <td><?= $row_cliente["ap_paterno"]?></td>
-                                    <td><?= $row_cliente["ap_materno"]?></td>       
+                                    <td><?= $row_cliente["ap_materno"]?></td>        
                                     <td>
                                         <a onclick="selecionarCliente(<?= $row_cliente["id_cliente"]?>)" id="btn-actualizar">Seleccionar</a>
                                     </td>

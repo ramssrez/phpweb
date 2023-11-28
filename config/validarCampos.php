@@ -5,7 +5,7 @@
         echo "<p class='succesful'>*Datos enviados correctamente</p>";
     }
     */
-    if(validarCamposCliente()){
+    if(validarCamposCliente()){        
         $sqlInsertCliente = "INSERT INTO tblcliente (nombre, ap_paterno, ap_materno, rfc, curp, 
             fecha_nacimiento, id_estado, id_sexo) VALUES ('$name_cliente', '$apellido_pa_cliente', 
             '$apellido_ma_cliente', '$rfc_cliente', '$curp_cliente', '$nacimiento_cliente', '$estado', '$sexo');
@@ -14,7 +14,7 @@
             echo "<p class='succesful'>*Datos enviados correctamente</p>";
         }else{
             echo "<p class='error'>Error: No se enviaron los datos correctamente</p>";
-        }
+        }  
         mysqli_close($conn);
     }
     function validarCamposCliente(){

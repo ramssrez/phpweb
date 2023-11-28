@@ -7,8 +7,6 @@
     header("Location: ../index.php");
         die();
     }
-?>
-<?php 
     if(isset($_POST['submit-cliente'])){
         $name_cliente = $_POST['name-cliente'];
         $apellido_pa_cliente = $_POST['apellido-pa-cliente'];
@@ -92,11 +90,11 @@
                     </div>
                     <div class="elemento">
                         <label for="curp-cliente">CURP</label>
-                        <input type="text" id="curp-cliente"  name="curp-cliente">
+                        <input type="text" id="curp-cliente"  name="curp-cliente" readonly>
                     </div>
                     <div class="elemento">
                         <label for="rfc-cliente">RFC</label>
-                        <input type="text" id="rfc-cliente" name="rfc-cliente">
+                        <input type="text" id="rfc-cliente" name="rfc-cliente" readonly>
                     </div>
                     <p id="error"></p>
                     <?php
@@ -134,7 +132,7 @@
                             $clientesRead = $conn->query($sqlClienteRead);
                         ?>
                         <?php
-                            while($row_cliente = $clientesRead->fetch_assoc()){ ?>
+                            while($row_cliente = $clientesRead->fetch_assoc()){ ?>  
                                 <tr>
                                     <td><?= $row_cliente["id_cliente"]?></td>
                                     <td><?= $row_cliente["nombre"]?></td>
@@ -144,12 +142,12 @@
                                     <td><?= $row_cliente["curp"]?></td>
                                     <td><?= $row_cliente["rfc"]?></td>
                                     <td><?= $row_cliente["nombre_estado"]?></td>
-                                    <td><?= $row_cliente["tipo_sexo"]?></td>
+                                    <td><?= $row_cliente["tipo_sexo"]?></td>         
                                     <td>
-                                        <button id="btn-actualizar">Actualizar</button>
+                                        <a id="btn-actualizar" href="../pages/RRPActualizarCliente.php?id=<?= $row_cliente["id_cliente"]?>">Actualizar</a>
                                     </td>
                                     <td>
-                                        <button id="btn-eliminar">Eliminar</button>
+                                        <a id="btn-eliminar" href="../cruds/eliminarCliente.php?id=<?= $row_cliente["id_cliente"]?>">Eliminar</a>
                                     </td>
                                 </tr>  
                         <?php }?>

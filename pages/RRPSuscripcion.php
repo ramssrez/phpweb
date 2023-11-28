@@ -24,8 +24,8 @@
                 <h2>Registro de suscripción</h2>
                 <form action="" name="form-categoria" id="form-suscripcion" method="post">
                     <div class="elemento">
-                        <label for="name-categoria">Tipo</label>
-                        <input type="text" id="name-categoria" name="tipo-suscripcion">
+                        <label for="tipo-suscripcion">Tipo</label>
+                        <input type="text" id="tipo-suscripcion" name="tipo-suscripcion">
                     </div>
                     <div class="elemento">
                         <label for="numero-tarjeta">Número de tarjeta</label>
@@ -44,8 +44,12 @@
                         <input type="text" id="fecha-tarjeta" name="fecha-tarjeta">
                     </div>
                     <div class="elemento">
-                        <label for="fecha-tarjeta">CVV</label>
-                        <input type="text" id="fecha-tarjeta" name="fecha-tarjeta">
+                        <label for="cvv-tarjeta">CVV</label>
+                        <input type="text" id="cvv-tarjeta" name="cvv-tarjeta">
+                    </div>
+                    <div class="elemento">
+                        <label for="id-cliente">Id Cliente</label>
+                        <input type="number" id="id-cliente" name="id-cliente" readonly>
                     </div>
                     <div class="elemento">
                         <input id="btn-agregar" name= "submit-category" type="submit" value="Agregar">
@@ -56,46 +60,39 @@
                 <h2>Lista de clientes</h2>
                 <table>
                     <thead>
-                        <th>N°</th>
+                        <th>Id</th>
                         <th>Nombre</th>
-                        <th></th>
+                        <th>Apellido paterno</th>
+                        <th>Apellido materno</th>
                         <th></th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>01</td>
-                            <td>Terror</td>
-                            <td>
-                                <button id="btn-actualizar">Actualizar</button>
-                            </td>
-                            <td>
-                                <button id="btn-eliminar">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>Drama</td>
-                            <td>
-                                <button id="btn-actualizar">Actualizar</button>
-                            </td>
-                            <td>
-                                <button id="btn-eliminar">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>Romance</td>
-                            <td>
-                                <button id="btn-actualizar">Actualizar</button>
-                            </td>
-                            <td>
-                                <button id="btn-eliminar">Eliminar</button>
-                            </td>
-                        </tr>
+                        <?php
+                            require '../config/conexionDB.php';
+                            $sqlClienteRead = "SELECT id_cliente, nombre , ap_paterno, ap_materno FROM tblcliente
+                                ORDER BY id_cliente ASC;";
+                            $clientesRead = $conn->query($sqlClienteRead);
+                        ?>
+                        <?php
+                            while($row_cliente = $clientesRead->fetch_assoc()){ ?>  
+                                <tr>
+                                    <td><?= $row_cliente["id_cliente"]?></td>
+                                    <td><?= $row_cliente["nombre"]?></td>
+                                    <td><?= $row_cliente["ap_paterno"]?></td>
+                                    <td><?= $row_cliente["ap_materno"]?></td>       
+                                    <td>
+                                        <a onclick="selecionarCliente(<?= $row_cliente["id_cliente"]?>)" id="btn-actualizar">Seleccionar</a>
+                                    </td>
+                                </tr>  
+                        <?php }?>
+                        <?php
+                            mysqli_close($conn);
+                        ?>
                     </tbody>
                 </table>
             </div>
         </div>
+        <script src="../assets/JS/seleccionCliente.js"></script>
         <footer class="footer">
             <div class="footer-links">
                 <p>RRP-DPW1-noviembre/2023</p>

@@ -8,6 +8,7 @@
                 <li><a href="RRPCRUDDirector.php">CRUD Director</a></li>
                 <li><a href="RRPCRUDActor.php">CRUD Actor</a></li>
                 <li><a href="RRPCRUDCliente.php">CRUD Cliente</a></li>
+                <li><a href="RRPSuscripcion.php">Suscripción</a></li>
                 <li><a href="../config/logout.php">Cerrar Sesión</a></li>
             </ul>
         </nav>

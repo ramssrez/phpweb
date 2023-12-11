@@ -51,36 +51,27 @@
                         <th></th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>01</td>
-                            <td>Terror</td>
-                            <td>
-                                <button id="btn-actualizar">Actualizar</button>
-                            </td>
-                            <td>
-                                <button id="btn-eliminar">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>Drama</td>
-                            <td>
-                                <button id="btn-actualizar">Actualizar</button>
-                            </td>
-                            <td>
-                                <button id="btn-eliminar">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>Romance</td>
-                            <td>
-                                <button id="btn-actualizar">Actualizar</button>
-                            </td>
-                            <td>
-                                <button id="btn-eliminar">Eliminar</button>
-                            </td>
-                        </tr>
+                        <?php
+                            require '../config/conexionDB.php';
+                            $sqlCategoriaRead = "SELECT id_categoria, categoria FROM tblcategoria ORDER BY id_categoria ASC;";
+                            $categoriaRead= $conn->query($sqlCategoriaRead);
+                        ?>
+                        <?php
+                            while($row_categoria = $categoriaRead->fetch_assoc()){ ?>  
+                                <tr>
+                                    <td><?= $row_categoria["id_categoria"]?></td>
+                                    <td><?= $row_categoria["categoria"]?></td>        
+                                    <td>
+                                        <a id="btn-actualizar" href="">Actualizar</a>
+                                    </td>
+                                    <td>
+                                        <a id="btn-eliminar" href="">Eliminar</a>
+                                    </td>
+                                </tr>  
+                        <?php }?>
+                        <?php
+                            mysqli_close($conn);
+                        ?>
                     </tbody>
                 </table>
             </div>

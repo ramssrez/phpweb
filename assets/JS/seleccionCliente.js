@@ -3,6 +3,7 @@ const expresiones = {
 }
 var idCliente = document.getElementById("id-cliente");
 var tipoSuscripcionInput = document.getElementById("tipo-suscripcion");
+var numeroTarjetaInput = document.getElementById("numero-tarjeta");
 var btnAgregar = document.getElementById("btn-agregar");
 btnAgregar.disabled = true;
 
@@ -15,6 +16,17 @@ function validarInputTipoSuscripcion(){
         limpiarError();
         return true;
     } 
+}
+function validarInputNumeroTarjeta(){
+    if(numeroTarjetaInput.value.length !== 16 || numeroTarjetaInput.value < 0){
+        var errorParrafo = document.getElementById("error");
+        errorParrafo.className = "error";
+        errorParrafo.innerHTML = "*Error: El número de tarjeta, debe tener 16 números en total y ser positivo; ";
+       return false;
+    }else{
+        limpiarError();
+        return true;
+    }
 }
 //Función que manda un error en el sitio web, para el caso de que no se acepten caracteres especiales en los campos
 function mensajeError(campo){
@@ -31,18 +43,17 @@ function limpiarError(){
 function tipoSuscripcionOk(){
     console.log(tipoSuscripcionInput.value);
     if(tipoSuscripcionInput.value !== 'Anual' && tipoSuscripcionInput.value !== 'Mensual'){
-        console.log("No esta ok");
         var errorParrafo = document.getElementById("error");
         errorParrafo.className = "error";
         errorParrafo.innerHTML = "*Error: Solo se permite el el campo de tipo; Anual o Mensual.";
         return false;
     }else{
         return true;
-        //console.log("Si esta ok");
     }
 }
 function selecionarCliente(id){
     idCliente.value = id;
 }
 tipoSuscripcionInput.addEventListener("input",validarInputTipoSuscripcion);
+numeroTarjetaInput.addEventListener("input", validarInputNumeroTarjeta);
 tipoSuscripcionInput.addEventListener("blur", tipoSuscripcionOk);

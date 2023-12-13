@@ -37,20 +37,29 @@
                     </div>
                     <div class="elemento">
                         <label for="precio-pagar">Precio a pagar</label>
-                        <input type="number" id="precio-pagar" name="precio-pagar">
+                        <input type="text" id="precio-pagar" name="precio-pagar">
                     </div>
                     <div class="elemento">
-                        <label for="fecha-tarjeta">Fecha tarjeta MM/AA</label>
-                        <input type="text" id="fecha-tarjeta" name="fecha-tarjeta">
+                        <label for="mes-fecha-tarjeta">Mes expiración tarjeta MM</label>
+                        <input type="text" id="mes-fecha-tarjeta" name="mes-fecha-tarjeta">
+                    </div>
+                    <div class="elemento">
+                        <label for="year-fecha-tarjeta">Año expiración tarjeta AA</label>
+                        <input type="text" id="year-fecha-tarjeta" name="year-fecha-tarjeta">
                     </div>
                     <div class="elemento">
                         <label for="cvv-tarjeta">CVV</label>
                         <input type="text" id="cvv-tarjeta" name="cvv-tarjeta">
                     </div>
                     <div class="elemento">
+                        <label for="fecha-suscripcion">Fecha suscripción</label>
+                        <input type="text" id="fecha-suscripcion" name="fecha-suscripcion" readonly>
+                    </div>
+                    <div class="elemento">
                         <label for="id-cliente">Id Cliente</label>
                         <input type="number" id="id-cliente" name="id-cliente" readonly>
                     </div>
+                    <p id="error"></p>
                     <div class="elemento">
                         <input id="btn-agregar" name= "submit-category" type="submit" value="Agregar">
                     </div>

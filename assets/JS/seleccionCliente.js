@@ -6,9 +6,9 @@ var idCliente = document.getElementById("id-cliente");
 var tipoSuscripcionInput = document.getElementById("tipo-suscripcion");
 var numeroTarjetaInput = document.getElementById("numero-tarjeta");
 var bancoInput = document.getElementById("banco-tarjeta");
-
+var precioInput = document.getElementById("precio-pagar");
 var btnAgregar = document.getElementById("btn-agregar");
-btnAgregar.disabled = true;
+//btnAgregar.disabled = true;
 
 function validarInputTipoSuscripcion(){    
    if (!expresiones.campoTexto.test(tipoSuscripcionInput.value)) {
@@ -31,6 +31,18 @@ function validarInputNumeroTarjeta(){
         return true;
     }
 }
+function validarInputPrecio(){
+    if (precioInput.value < 0) {
+        var errorParrafo = document.getElementById("error");
+        errorParrafo.className = "error";
+        errorParrafo.innerHTML = "*Error: El precio, debe ser positivo; ";
+       return false;
+    }
+    else{
+        limpiarError();
+        return true;
+    }
+}
 function validarInputBanco(){
     if (!expresiones.campoTextoSinAcento.test(bancoInput.value)) {
         mensajeErrorSinAcento("Campo banco");
@@ -41,6 +53,7 @@ function validarInputBanco(){
         return true;
     } 
 }
+
 //Función que manda un error en el sitio web, para el caso de que no se acepten caracteres especiales en los campos
 function mensajeError(campo){
     var errorParrafo = document.getElementById("error");
@@ -75,7 +88,27 @@ function tipoSuscripcionOk(){
 function selecionarCliente(id){
     idCliente.value = id;
 }
+/*
+document.getElementById("fecha-tarjeta").addEventListener('input', function(event) {
+    let inputValue = event.target.value;
+
+    // Eliminar caracteres no numéricos
+    inputValue = inputValue.replace(/\D/g, '');
+
+    // Limitar la longitud a 4 caracteres
+    inputValue = inputValue.slice(0, 4);
+
+    // Formatear como MM/AA
+    if (inputValue.length >= 2) {
+        inputValue = inputValue.slice(0, 2) + '/' + inputValue.slice(2);
+    }
+
+    // Actualizar el valor del campo
+    event.target.value = inputValue;
+});
+*/
 tipoSuscripcionInput.addEventListener("input",validarInputTipoSuscripcion);
 numeroTarjetaInput.addEventListener("input", validarInputNumeroTarjeta);
 bancoInput.addEventListener("input",validarInputBanco);
+precioInput.addEventListener("input",validarInputPrecio);
 tipoSuscripcionInput.addEventListener("blur", tipoSuscripcionOk);

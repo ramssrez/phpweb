@@ -1,14 +1,28 @@
 const expresiones = {
 	campoTexto : /^[a-zA-Z\sñáéíóúÁÉÍÓÚ]+$/,// Solo palabras con acentos
     campoTextoSinAcento : /^[a-zA-Z]+$/,
+    campoSoloNumero : /\D/g,
+    campoNumeroWithDecimal :/[^\d.]/g
 }
 var idCliente = document.getElementById("id-cliente");
 var tipoSuscripcionInput = document.getElementById("tipo-suscripcion");
 var numeroTarjetaInput = document.getElementById("numero-tarjeta");
 var bancoInput = document.getElementById("banco-tarjeta");
 var precioInput = document.getElementById("precio-pagar");
+var mesFechaTarjetaInput = document.getElementById("mes-fecha-tarjeta");
+var yearFechaTarjetaInput = document.getElementById("year-fecha-tarjeta");
+var fechaSuscripcionInput = document.getElementById("fecha-suscripcion");
 var btnAgregar = document.getElementById("btn-agregar");
-//btnAgregar.disabled = true;
+btnAgregar.disabled = true;
+
+var fechaActual = new Date();
+// Extraer componentes de la fecha
+var dia = fechaActual.getDate();
+var mes = fechaActual.getMonth() + 1; // Los meses comienzan desde 0
+var anio = fechaActual.getFullYear();
+// Formatear la fecha como "DD/MM/AAAA"
+var fechaFormateada = `${anio}-${mes.toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;
+fechaSuscripcionInput.value = fechaFormateada;
 
 function validarInputTipoSuscripcion(){    
    if (!expresiones.campoTexto.test(tipoSuscripcionInput.value)) {
@@ -21,6 +35,7 @@ function validarInputTipoSuscripcion(){
     } 
 }
 function validarInputNumeroTarjeta(){
+    numeroTarjetaInput.value = numeroTarjetaInput.value.replace(expresiones.campoSoloNumero,'');
     if(numeroTarjetaInput.value.length !== 16 || numeroTarjetaInput.value < 0){
         var errorParrafo = document.getElementById("error");
         errorParrafo.className = "error";
@@ -32,6 +47,7 @@ function validarInputNumeroTarjeta(){
     }
 }
 function validarInputPrecio(){
+    precioInput.value = precioInput.value.replace(expresiones.campoNumeroWithDecimal,'');
     if (precioInput.value < 0) {
         var errorParrafo = document.getElementById("error");
         errorParrafo.className = "error";
@@ -42,6 +58,40 @@ function validarInputPrecio(){
         limpiarError();
         return true;
     }
+}
+function validarMesFechaInput(){
+    mesFechaTarjetaInput.value = mesFechaTarjetaInput.value.replace(expresiones.campoSoloNumero,'');
+    if (mesFechaTarjetaInput.value > 13 || mesFechaTarjetaInput.value < 0) {
+        var errorParrafo = document.getElementById("error");
+        errorParrafo.className = "error";
+        errorParrafo.innerHTML = "*Error: El rango de meses debe estar entre 01 y 12; ";
+       return false;
+    }else if(mesFechaTarjetaInput.value.length < 2){
+        var errorParrafo = document.getElementById("error");
+        errorParrafo.className = "error";
+        errorParrafo.innerHTML = "*Error: El campo debe tener dos caracteres; ";
+        return false;
+    }else{
+        limpiarError();
+        return true;
+    } 
+}
+function validarYearFechaInput(){
+    yearFechaTarjetaInput.value = yearFechaTarjetaInput.value.replace(expresiones.campoSoloNumero,'');
+    if(yearFechaTarjetaInput.value < 23){
+        var errorParrafo = document.getElementById("error");
+        errorParrafo.className = "error";
+        errorParrafo.innerHTML = "*Error: La fecha dede ser mayor a 2023; ";
+        return false;
+    }else if(yearFechaTarjetaInput.value.length < 2){
+        var errorParrafo = document.getElementById("error");
+        errorParrafo.className = "error";
+        errorParrafo.innerHTML = "*Error: El campo debe tener dos caracteres; ";
+        return false;
+    }else{
+        limpiarError();
+        return true;
+    } 
 }
 function validarInputBanco(){
     if (!expresiones.campoTextoSinAcento.test(bancoInput.value)) {
@@ -74,7 +124,6 @@ function limpiarError(){
 }
 //Función que verifica si se ha escrito la palabra Anual o Mensual el el campo de texto
 function tipoSuscripcionOk(){
-    console.log(tipoSuscripcionInput.value);
     if(tipoSuscripcionInput.value !== 'Anual' && tipoSuscripcionInput.value !== 'Mensual'){
         var errorParrafo = document.getElementById("error");
         errorParrafo.className = "error";
@@ -88,27 +137,10 @@ function tipoSuscripcionOk(){
 function selecionarCliente(id){
     idCliente.value = id;
 }
-/*
-document.getElementById("fecha-tarjeta").addEventListener('input', function(event) {
-    let inputValue = event.target.value;
-
-    // Eliminar caracteres no numéricos
-    inputValue = inputValue.replace(/\D/g, '');
-
-    // Limitar la longitud a 4 caracteres
-    inputValue = inputValue.slice(0, 4);
-
-    // Formatear como MM/AA
-    if (inputValue.length >= 2) {
-        inputValue = inputValue.slice(0, 2) + '/' + inputValue.slice(2);
-    }
-
-    // Actualizar el valor del campo
-    event.target.value = inputValue;
-});
-*/
 tipoSuscripcionInput.addEventListener("input",validarInputTipoSuscripcion);
 numeroTarjetaInput.addEventListener("input", validarInputNumeroTarjeta);
 bancoInput.addEventListener("input",validarInputBanco);
 precioInput.addEventListener("input",validarInputPrecio);
+mesFechaTarjetaInput.addEventListener("input",validarMesFechaInput);
+yearFechaTarjetaInput.addEventListener("input",validarYearFechaInput);
 tipoSuscripcionInput.addEventListener("blur", tipoSuscripcionOk);

@@ -1,9 +1,12 @@
 const expresiones = {
-	campoTexto: /^[a-zA-Z\sñáéíóúÁÉÍÓÚ]+$/,// Solo palabras con acentos
+	campoTexto : /^[a-zA-Z\sñáéíóúÁÉÍÓÚ]+$/,// Solo palabras con acentos
+    campoTextoSinAcento : /^[a-zA-Z]+$/,
 }
 var idCliente = document.getElementById("id-cliente");
 var tipoSuscripcionInput = document.getElementById("tipo-suscripcion");
 var numeroTarjetaInput = document.getElementById("numero-tarjeta");
+var bancoInput = document.getElementById("banco-tarjeta");
+
 var btnAgregar = document.getElementById("btn-agregar");
 btnAgregar.disabled = true;
 
@@ -28,11 +31,27 @@ function validarInputNumeroTarjeta(){
         return true;
     }
 }
+function validarInputBanco(){
+    if (!expresiones.campoTextoSinAcento.test(bancoInput.value)) {
+        mensajeErrorSinAcento("Campo banco");
+        return false;
+    }
+    else{
+        limpiarError();
+        return true;
+    } 
+}
 //Función que manda un error en el sitio web, para el caso de que no se acepten caracteres especiales en los campos
 function mensajeError(campo){
     var errorParrafo = document.getElementById("error");
     errorParrafo.className = "error";
     errorParrafo.innerHTML = "*Error: El campo no debe de contener números ni caracteres especiales; "+ campo;
+}
+//Función que manda un error en el sitio web, para el caso de que no se acepten caracteres especiales en los campos, ni núemeros, ni palabras con acentos
+function mensajeErrorSinAcento(campo){
+    var errorParrafo = document.getElementById("error");
+    errorParrafo.className = "error";
+    errorParrafo.innerHTML = "*Error: El campo no debe de contener números, ni caracteres especiales, ni acentos; "+ campo;
 }
 //Función que limpia el mensaje de error anteriormente generado
 function limpiarError(){
@@ -40,6 +59,7 @@ function limpiarError(){
     errorParrafo.className = "";
     errorParrafo.innerHTML = "";
 }
+//Función que verifica si se ha escrito la palabra Anual o Mensual el el campo de texto
 function tipoSuscripcionOk(){
     console.log(tipoSuscripcionInput.value);
     if(tipoSuscripcionInput.value !== 'Anual' && tipoSuscripcionInput.value !== 'Mensual'){
@@ -51,9 +71,11 @@ function tipoSuscripcionOk(){
         return true;
     }
 }
+//Función que asigna el id del cliente, cuando se ha seleccioando
 function selecionarCliente(id){
     idCliente.value = id;
 }
 tipoSuscripcionInput.addEventListener("input",validarInputTipoSuscripcion);
 numeroTarjetaInput.addEventListener("input", validarInputNumeroTarjeta);
+bancoInput.addEventListener("input",validarInputBanco);
 tipoSuscripcionInput.addEventListener("blur", tipoSuscripcionOk);

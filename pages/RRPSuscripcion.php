@@ -22,7 +22,7 @@
         <div class="contenedor-table-crud">
             <div class="contenedor-crud">
                 <h2>Registro de suscripción</h2>
-                <form action="../cruds/agregarMembresia.php" name="form-categoria" id="form-suscripcion" method="post">
+                <form action="../cruds/agregarMembresia.php" name="form-suscripcion" id="form-suscripcion" method="post">
                     <div class="elemento">
                         <label for="tipo-suscripcion">Tipo</label>
                         <input type="text" id="tipo-suscripcion" name="tipo-suscripcion">
